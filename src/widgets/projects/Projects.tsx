@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
 import { PROJECTS } from "@/entities/project";
 

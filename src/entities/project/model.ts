@@ -3,6 +3,7 @@ export type Project = {
   period: string;
   description: string;
   metric: string;
+  image: string;
   href?: string;
 };
 
@@ -13,6 +14,7 @@ export const PROJECTS: Project[] = [
     description:
       "광주교육청의 외주를 받아서 만든 청소년 오디션 프로그램의 운영 효율성을 높이기 위해 개발한 웹 서비스입니다.",
     metric: "www.광탈페.kr",
+    image: "/projects/gwangtalpe.png",
     href: "https://광탈페.kr",
   },
   {
@@ -20,5 +22,6 @@ export const PROJECTS: Project[] = [
     period: "시민화폐, 광산",
     description: "가상의 화폐 '광산'을 거래할 수 있는 광산구 주민 대상 플랫폼입니다.",
     metric: "시민화폐 광산 앱(안드로이드, iOS)",
+    image: "/projects/gwangsan.png",
   },
 ];
