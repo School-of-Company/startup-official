@@ -5,7 +5,7 @@ import { Footer } from "@/widgets/footer";
 import { BRAND } from "@/shared/config";
 
 export const metadata: Metadata = {
-  title: `지원하기 — ${BRAND}`,
+  title: "지원하기",
   description: `${BRAND} 동아리 신입 부원 지원서 작성 페이지입니다.`,
 };
 

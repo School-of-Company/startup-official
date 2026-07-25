@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import { BackButton, Logo, SectionGlow } from "@/shared/ui";
-import { BRAND } from "@/shared/config";
 
 export const metadata: Metadata = {
-  title: `페이지를 찾을 수 없어요 — ${BRAND}`,
+  title: "404",
 };
 
 export default function NotFound() {

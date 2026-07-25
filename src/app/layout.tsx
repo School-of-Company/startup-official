@@ -4,7 +4,10 @@ import { BRAND } from "@/shared/config";
 import { THEME_SCRIPT } from "@/features/theme-toggle";
 
 export const metadata: Metadata = {
-  title: `${BRAND} — 실전 중심 스타트업 동아리`,
+  title: {
+    default: BRAND,
+    template: `${BRAND} | %s`,
+  },
   description:
     `광주소프트웨어마이스터고 ${BRAND} 동아리 신입 부원(GSM 10기) 공개 채용. 실제 사용자를 위한 서비스를 기획, 개발, 배포까지 직접 경험하세요.`,
   openGraph: {
