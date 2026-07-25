@@ -4,6 +4,7 @@ import { BRAND } from "@/shared/config";
 import { THEME_SCRIPT } from "@/features/theme-toggle";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.schoolofcompany.com"),
   title: {
     default: BRAND,
     template: `${BRAND} | %s`,
