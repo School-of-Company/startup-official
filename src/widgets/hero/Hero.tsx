@@ -103,7 +103,7 @@ export default function Hero() {
         >
           <a
             href={APPLY_URL ?? "/apply"}
-            className="w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_8px_30px_-8px_rgba(255,59,92,0.65)] transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
+            className="w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
           >
             {GENERATION} 지원하기
           </a>

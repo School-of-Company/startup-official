@@ -2,7 +2,7 @@ import { Logo } from "@/shared/ui";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border pb-28 pt-12">
+    <footer className="bg-surface pb-28 pt-12">
       <div className="mx-auto flex max-w-wide flex-col items-center gap-6 px-6 text-center sm:flex-row sm:justify-between sm:text-left sm:px-8 lg:px-10">
         <div>
           <Logo idPrefix="footer-logo" className="h-4 w-auto text-fg" />

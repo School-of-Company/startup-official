@@ -304,7 +304,7 @@ export default function ApplyForm() {
               </p>
               <a
                 href="/"
-                className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_8px_30px_-8px_rgba(255,59,92,0.65)] transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
+                className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
               >
                 스타트업 동아리 홈페이지로 가기
               </a>
@@ -405,7 +405,7 @@ export default function ApplyForm() {
 
               <button
                 type="submit"
-                className="mt-2 w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_8px_30px_-8px_rgba(255,59,92,0.65)] transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
+                className="mt-2 w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
               >
                 지원서 제출하기
               </button>
