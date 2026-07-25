@@ -13,7 +13,7 @@ export default function ApplyPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="flex-1">
         <ApplyForm />
       </main>
       <Footer />

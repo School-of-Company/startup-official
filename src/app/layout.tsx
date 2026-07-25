@@ -24,7 +24,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col font-sans antialiased">{children}</body>
     </html>
   );
 }

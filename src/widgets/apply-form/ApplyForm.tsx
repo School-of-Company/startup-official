@@ -5,7 +5,7 @@ import type { FormEvent, ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GENERATION } from "@/shared/config";
 import { TRACKS } from "@/entities/track";
-import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
+import { Logo, Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
 
 type Values = {
   studentId: string;
@@ -32,7 +32,13 @@ const INITIAL_VALUES: Values = {
 const INPUT_CLASS =
   "w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm text-fg placeholder:text-muted/60 transition-colors focus:border-accent-soft focus:outline-none focus:ring-2 focus:ring-accent-dim/40";
 
-function FieldLabel({ label, required }: { label: string; required?: boolean }) {
+function FieldLabel({
+  label,
+  required,
+}: {
+  label: string;
+  required?: boolean;
+}) {
   return (
     <span className="mb-2 block text-sm font-medium text-fg">
       {label}
@@ -167,7 +173,13 @@ function SelectField({
                   >
                     {opt}
                     {active && (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="shrink-0">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        className="shrink-0"
+                      >
                         <path
                           d="M5 13l4 4L19 7"
                           stroke="currentColor"
@@ -256,7 +268,9 @@ function FormSection({
           <span className="text-sm font-semibold tracking-[0.2em] text-accent-soft">
             {index}
           </span>
-          <h2 className="text-lg font-bold tracking-tight sm:text-xl">{title}</h2>
+          <h2 className="text-lg font-bold tracking-tight sm:text-xl">
+            {title}
+          </h2>
         </div>
         <div className={`grid gap-5 ${gridClassName}`}>{children}</div>
       </section>
@@ -284,7 +298,8 @@ export default function ApplyForm() {
         {submitted ? (
           <Reveal>
             <div className="mx-auto max-w-xl text-center">
-              <p className="text-base leading-relaxed text-fg">
+              <Logo className="mx-auto h-12 w-auto text-fg sm:h-14" />
+              <p className="mt-6 text-base leading-relaxed text-fg">
                 스타트업 동아리에 소중한 시간 내어 지원해 주셔서 감사드립니다.
               </p>
               <a
@@ -303,7 +318,10 @@ export default function ApplyForm() {
               description={`${GENERATION} 스타트업 동아리 팀원 모집에 지원해주셔서 감사합니다. 아래 내용을 빠짐없이 작성해주세요.`}
             />
 
-            <form onSubmit={handleSubmit} className="mx-auto flex max-w-2xl flex-col gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto flex max-w-2xl flex-col gap-6"
+            >
               <FormSection index="01" title="기본 정보">
                 <Field
                   label="학번"
@@ -323,7 +341,11 @@ export default function ApplyForm() {
                 />
               </FormSection>
 
-              <FormSection index="02" title="자기소개서" gridClassName="grid-cols-1">
+              <FormSection
+                index="02"
+                title="자기소개서"
+                gridClassName="grid-cols-1"
+              >
                 <TextareaField
                   label="자기소개"
                   name="intro"
