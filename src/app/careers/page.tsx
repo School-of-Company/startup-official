@@ -7,7 +7,7 @@ import { Process } from "@/widgets/process";
 import { Footer } from "@/widgets/footer";
 import { StickyApplyBar } from "@/widgets/sticky-apply-bar";
 
-export default function Home() {
+export default function CareersPage() {
   return (
     <>
       <Header />

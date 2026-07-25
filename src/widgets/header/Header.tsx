@@ -8,6 +8,8 @@ import { ThemeToggle } from "@/features/theme-toggle";
 import { useReducedMotionSafe } from "@/shared/lib";
 import { Logo } from "@/shared/ui";
 
+const HOME_PATH = "/careers";
+
 const NAV_ITEMS = [
   { href: "#about", label: "소개" },
   { href: "#projects", label: "프로젝트" },
@@ -54,7 +56,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <a href="/#top" className="flex items-center" aria-label="홈으로 이동">
+        <a href={`${HOME_PATH}#top`} className="flex items-center" aria-label="홈으로 이동">
           <Logo className="h-5 w-auto text-fg sm:h-6" />
         </a>
 
@@ -62,7 +64,7 @@ export default function Header() {
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
-              href={`/${item.href}`}
+              href={`${HOME_PATH}${item.href}`}
               onClick={scrollToHash(item.href)}
               className="text-sm text-muted transition-colors hover:text-fg"
             >
@@ -125,7 +127,7 @@ export default function Header() {
               {NAV_ITEMS.map((item, i) => (
                 <motion.a
                   key={item.href}
-                  href={`/${item.href}`}
+                  href={`${HOME_PATH}${item.href}`}
                   onClick={(e) => {
                     setMenuOpen(false);
                     scrollToHash(item.href)(e);

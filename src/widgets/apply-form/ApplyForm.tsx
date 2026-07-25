@@ -303,7 +303,7 @@ export default function ApplyForm() {
                 스타트업 동아리에 소중한 시간 내어 지원해 주셔서 감사드립니다.
               </p>
               <a
-                href="/"
+                href="/careers"
                 className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
               >
                 스타트업 동아리 홈페이지로 가기
