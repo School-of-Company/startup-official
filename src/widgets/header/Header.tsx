@@ -45,6 +45,12 @@ export default function Header() {
     target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   };
 
+  const scrollToTop = (e: MouseEvent) => {
+    if (window.location.pathname !== HOME_PATH) return;
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+  };
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 ${
@@ -56,7 +62,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <a href={`${HOME_PATH}#top`} className="flex items-center" aria-label="홈으로 이동">
+        <a href={HOME_PATH} onClick={scrollToTop} className="flex items-center" aria-label="홈으로 이동">
           <Logo className="h-5 w-auto text-fg sm:h-6" />
         </a>
 
