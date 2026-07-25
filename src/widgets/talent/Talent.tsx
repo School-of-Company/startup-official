@@ -4,20 +4,13 @@ const TRAITS = [
   {
     title: "책임감 있는 몰입",
     description: "진행 중인 프로젝트에 애정과 책임감을 가진 사람",
+    angle: 35,
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <svg width="88" height="88" viewBox="0 0 124 130" fill="currentColor">
         <path
-          d="M12 3l7 3v5c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3Z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M9 12.2l2 2 4-4.4"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M67.6404 65.4187C54.6347 67.0582 46.768 73.2839 41.6002 77.0541C39.441 78.6286 36.4541 76.9385 36.8284 74.2879L41.0388 46.532C41.2188 45.3692 42.0897 44.4375 43.2484 44.2569C46.5089 43.7514 53.3248 41.9746 58.5789 35.8356C61.4578 32.4771 63.0413 28.1942 63.689 23.8102C64.236 20.1051 64.3224 15.7716 63.0197 12.3193C60.8389 4.99571 49.9924 -2.38563 37.5337 0.734463C29.2279 3.21176 23.3692 9.09084 19.4898 22.7774L0.510288 103.56C-1.27467 111.223 1.71225 119.204 8.07475 123.798L8.20431 123.899C10.9681 125.907 14.1925 127.178 17.6041 127.59C35.8063 129.749 102.051 135.224 120.851 116.142C132.662 104.138 110.451 62.2769 67.6404 65.4187Z"
         />
       </svg>
     ),
@@ -25,36 +18,23 @@ const TRAITS = [
   {
     title: "활발한 커뮤니케이션",
     description: "팀원과 커뮤니케이션이 활발하고 연락을 잘 보는 사람",
+    angle: 180,
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M4 5h16v10H8l-4 4V5Z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <circle cx="8.5" cy="10" r="1" fill="currentColor" />
-        <circle cx="12" cy="10" r="1" fill="currentColor" />
-        <circle cx="15.5" cy="10" r="1" fill="currentColor" />
+      <svg width="88" height="88" viewBox="0 0 181 181" fill="currentColor">
+        <path d="M90.5032 26C54.3196 26 25 52.6455 25 84.8639C25 100.357 31.864 114.605 43.0918 125.138L37.4746 151.165C36.8512 153.642 39.3449 155.499 41.8385 154.88L71.1581 141.251C77.3987 143.108 83.6328 143.728 90.4967 143.728C126.68 143.728 156 117.082 156 84.8639C156 52.6455 126.687 26 90.5032 26Z" />
       </svg>
     ),
   },
   {
     title: "성장을 향한 갈망",
     description: "전공 실력을 향상시키고 개발자가 되는 것이 꿈인 사람",
+    angle: -50,
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <svg width="88" height="88" viewBox="0 0 174 174" fill="none">
         <path
-          d="M3 17l6-6 4 4 7-8"
+          d="M149 57L103.073 103.156L70.9272 70.8384L25 117"
           stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M14 6.5h6V12.5"
-          stroke="currentColor"
-          strokeWidth="1.6"
+          strokeWidth="12"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -65,7 +45,10 @@ const TRAITS = [
 
 export default function Talent() {
   return (
-    <section id="talent" className="relative scroll-mt-16 overflow-hidden py-24 sm:py-32">
+    <section
+      id="talent"
+      className="relative scroll-mt-16 overflow-hidden py-24 sm:py-32"
+    >
       <SectionGlow className="-right-40 top-10 h-[420px] w-[420px]" />
 
       <div className="relative mx-auto max-w-wide px-6 sm:px-8 lg:px-10">
@@ -78,12 +61,19 @@ export default function Talent() {
         <div className="grid gap-8 sm:grid-cols-3">
           {TRAITS.map((trait, i) => (
             <Reveal key={trait.title} delay={i * 0.08}>
-              <div className="group flex h-full flex-col items-center rounded-card border border-transparent bg-surface p-8 text-center transition-[transform,translate,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-accent to-accent-soft text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
+              <div
+                style={{
+                  background: `linear-gradient(${trait.angle}deg, rgb(var(--talent-accent)) 15%, var(--color-surface) 85%)`,
+                }}
+                className="group flex h-full flex-col items-center rounded-card p-8 text-center text-fg [--talent-accent:255_122_138] transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 dark:[--talent-accent:190_18_60]"
+              >
+                <h3 className="text-2xl font-extrabold">{trait.title}</h3>
+                <div className="flex flex-1 items-center justify-center py-10 transition-transform duration-300 group-hover:scale-110">
                   {trait.icon}
                 </div>
-                <h3 className="text-lg font-semibold">{trait.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{trait.description}</p>
+                <p className="text-base font-semibold leading-relaxed opacity-80">
+                  {trait.description}
+                </p>
               </div>
             </Reveal>
           ))}
