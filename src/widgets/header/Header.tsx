@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { href: "#about", label: "소개" },
   { href: "#projects", label: "프로젝트" },
   { href: "#tracks", label: "모집 분야" },
+  { href: "#talent", label: "인재상" },
   { href: "#process", label: "모집 절차" },
 ];
 
