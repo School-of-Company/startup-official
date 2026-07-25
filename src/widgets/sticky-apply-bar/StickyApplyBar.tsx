@@ -59,7 +59,7 @@ export default function StickyApplyBar() {
     <div
       id="apply"
       ref={anchorRef}
-      className="relative mx-auto flex max-w-wide justify-center px-6 py-12 sm:px-8 sm:py-16 lg:px-10"
+      className="relative mx-auto flex max-w-wide justify-center px-6 pt-6 pb-12 sm:px-8 sm:pt-8 sm:pb-16 lg:px-10"
     >
       <motion.div
         ref={barRef}

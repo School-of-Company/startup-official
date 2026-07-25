@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import type { ReactNode } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { Reveal, SectionHeading, SectionGlow } from "@/shared/ui";
 import { useReducedMotionSafe } from "@/shared/lib";
@@ -63,10 +63,15 @@ function FocusCard({
   const scale = useTransform(d, [-1, 0, 1, 2], [0.86, 1, 0.84, 0.72]);
   const opacity = useTransform(d, [-1, -0.4, 0, 0.55, 1, 2], [0, 1, 1, 0.15, 0, 0]);
   const zIndex = useTransform(d, (v) => Math.round(100 - Math.abs(v) * 10));
+  // Combined into one `transform` string instead of separate x/scale motion
+  // values -- Framer Motion's x/scale shorthands animate via rAF on the main
+  // thread and can drop frames on a busy scroll; a single transform lets the
+  // browser composite it on the GPU.
+  const transform = useMotionTemplate`translateX(${x}px) scale(${scale})`;
 
   return (
     <motion.div
-      style={{ x, scale, opacity, zIndex }}
+      style={{ transform, opacity, zIndex }}
       className="absolute inset-0 flex flex-col justify-center overflow-hidden rounded-card bg-surface p-8 text-center sm:p-12"
     >
       <span

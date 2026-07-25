@@ -8,11 +8,10 @@ export const metadata: Metadata = {
     default: BRAND,
     template: `${BRAND} | %s`,
   },
-  description:
-    `광주소프트웨어마이스터고 ${BRAND} 동아리 신입 부원(GSM 10기) 공개 채용. 실제 사용자를 위한 서비스를 기획, 개발, 배포까지 직접 경험하세요.`,
+  description: `${BRAND}에서 10기 인원을 대상으로 5세대 팀원을 모집합니다`,
   openGraph: {
-    title: `${BRAND} — 실전 중심 스타트업 동아리`,
-    description: "GSM 10기 신입 부원 공개 채용. 실제 사용자를 위한 서비스를 기획부터 배포까지.",
+    title: `${BRAND}`,
+    description: `${BRAND}에서 10기 인원을 대상으로 5세대 팀원을 모집합니다`,
     type: "website",
   },
 };
@@ -27,7 +26,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body className="flex min-h-screen flex-col font-sans antialiased">{children}</body>
+      <body className="flex min-h-screen flex-col font-sans antialiased">
+        {children}
+      </body>
     </html>
   );
 }
