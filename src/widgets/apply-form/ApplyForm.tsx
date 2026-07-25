@@ -149,11 +149,11 @@ function SelectField({
         {open && (
           <motion.ul
             role="listbox"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
+            initial={{ opacity: 0, scale: 0.96, y: -6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: -6 }}
             transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute z-20 mt-2 w-full overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.4)]"
+            className="absolute z-20 mt-2 w-full origin-top overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.4)]"
           >
             {options.map((opt) => {
               const active = value === opt;
@@ -296,20 +296,24 @@ export default function ApplyForm() {
 
       <div className="relative mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         {submitted ? (
-          <Reveal>
-            <div className="mx-auto max-w-xl text-center">
+          <div className="mx-auto max-w-xl text-center">
+            <Reveal>
               <Logo className="mx-auto h-12 w-auto text-fg sm:h-14" />
+            </Reveal>
+            <Reveal delay={0.12}>
               <p className="mt-6 text-base leading-relaxed text-fg">
                 스타트업 동아리에 소중한 시간 내어 지원해 주셔서 감사드립니다.
               </p>
+            </Reveal>
+            <Reveal delay={0.24}>
               <a
                 href="/careers"
                 className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
               >
                 스타트업 동아리 홈페이지로 가기
               </a>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         ) : (
           <>
             <SectionHeading

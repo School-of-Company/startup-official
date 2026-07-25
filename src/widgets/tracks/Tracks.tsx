@@ -65,7 +65,7 @@ export default function Tracks() {
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {TRACKS.map((track, i) => (
             <Reveal key={track.key} delay={i * 0.08}>
-              <div className="group flex h-full flex-col rounded-card border border-transparent bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
+              <div className="group flex h-full flex-col rounded-card border border-transparent bg-surface p-8 transition-[transform,translate,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
                 <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-accent to-accent-soft text-white">
                   {ICONS[track.key] ?? ICONS.frontend}
                 </div>

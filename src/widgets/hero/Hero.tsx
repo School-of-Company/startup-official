@@ -5,26 +5,8 @@ import { APPLY_URL } from "@/shared/config";
 import { Parallax } from "@/shared/ui";
 import { useReducedMotionSafe } from "@/shared/lib";
 
-const STACK = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Tailwind CSS",
-  "Spring",
-  "Kotlin",
-  "Swift",
-  "Terraform",
-  "AWS",
-  "Python",
-  "MySQL",
-  "Redis",
-  "Figma",
-  "Notion",
-];
-
 export default function Hero() {
   const reduceMotion = useReducedMotionSafe();
-  const stackItems = reduceMotion ? STACK : [...STACK, ...STACK];
 
   const fadeUp = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
@@ -115,29 +97,6 @@ export default function Hero() {
           </a>
         </motion.div>
       </div>
-
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        custom={4}
-        className="relative mt-12 overflow-hidden"
-      >
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-bg to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-bg to-transparent" />
-        <div
-          className={`flex w-max gap-4 ${reduceMotion ? "" : "animate-marquee"}`}
-        >
-          {stackItems.map((tech, i) => (
-            <span
-              key={`${tech}-${i}`}
-              className="whitespace-nowrap rounded-full bg-surface px-5 py-3 text-sm font-medium text-muted"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }

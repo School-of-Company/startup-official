@@ -78,7 +78,7 @@ export default function Talent() {
         <div className="grid gap-8 sm:grid-cols-3">
           {TRAITS.map((trait, i) => (
             <Reveal key={trait.title} delay={i * 0.08}>
-              <div className="group flex h-full flex-col items-center rounded-card border border-transparent bg-surface p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
+              <div className="group flex h-full flex-col items-center rounded-card border border-transparent bg-surface p-8 text-center transition-[transform,translate,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br from-accent to-accent-soft text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6">
                   {trait.icon}
                 </div>

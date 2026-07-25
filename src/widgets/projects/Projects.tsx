@@ -16,7 +16,7 @@ export default function Projects() {
         <div className="grid gap-8 sm:grid-cols-2">
           {PROJECTS.map((project, i) => {
             const Card = (
-              <div className="group h-full overflow-hidden rounded-card border border-transparent bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
+              <div className="group h-full overflow-hidden rounded-card border border-transparent bg-surface transition-[transform,translate,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent-dim hover:shadow-2xl hover:shadow-accent/10">
                 <div className="relative flex aspect-video items-center justify-center overflow-hidden bg-surface2">
                   <div
                     className="pointer-events-none absolute inset-0"
