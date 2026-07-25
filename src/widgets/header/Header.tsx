@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { APPLY_URL, BRAND } from "@/shared/config";
+import { APPLY_URL } from "@/shared/config";
 import { ThemeToggle } from "@/features/theme-toggle";
 import { useReducedMotionSafe } from "@/shared/lib";
+import { Logo } from "@/shared/ui";
 
 const NAV_ITEMS = [
   { href: "#about", label: "소개" },
@@ -53,14 +54,8 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <a
-          href="#top"
-          className="flex items-center gap-2 text-[15px] font-semibold tracking-tight"
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white">
-            S
-          </span>
-          {BRAND}
+        <a href="#top" className="flex items-center" aria-label="홈으로 이동">
+          <Logo className="h-5 w-auto text-fg sm:h-6" />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
