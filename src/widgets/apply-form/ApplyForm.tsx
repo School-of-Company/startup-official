@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { GENERATION } from "@/shared/config";
 import { TRACKS } from "@/entities/track";
 import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
@@ -88,26 +89,119 @@ function SelectField({
   onChange: (value: string) => void;
   options: string[];
 }) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
-    <label className="block">
+    <div ref={rootRef} className="relative block">
       <FieldLabel label={label} required={required} />
+      <button
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        aria-label={label}
+        onClick={() => setOpen((v) => !v)}
+        className={`${INPUT_CLASS} flex items-center justify-between gap-3 text-left ${
+          value ? "" : "text-muted/60"
+        }`}
+      >
+        <span className="truncate">{value || "선택해주세요"}</span>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          className={`shrink-0 text-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        >
+          <path
+            d="m6 9 6 6 6-6"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute z-20 mt-2 w-full overflow-hidden rounded-xl border border-border bg-surface p-1 shadow-[0_16px_40px_-16px_rgba(0,0,0,0.4)]"
+          >
+            {options.map((opt) => {
+              const active = value === opt;
+              return (
+                <li key={opt} role="option" aria-selected={active}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onChange(opt);
+                      setOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-left text-sm transition-colors ${
+                      active
+                        ? "bg-surface2 font-medium text-accent-soft"
+                        : "text-fg hover:bg-surface2"
+                    }`}
+                  >
+                    {opt}
+                    {active && (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="shrink-0">
+                        <path
+                          d="M5 13l4 4L19 7"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+
+      {/* Visually hidden but real <select> so the browser's native required-field
+          validation still fires on submit; the button above is the actual UI. */}
       <select
         name={name}
         required={required}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className={INPUT_CLASS}
+        onChange={() => {}}
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute inset-x-0 top-full h-0 w-full opacity-0"
       >
-        <option value="" disabled>
-          선택해주세요
-        </option>
+        <option value="" />
         {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
+          <option key={opt} value={opt} />
         ))}
       </select>
-    </label>
+    </div>
   );
 }
 

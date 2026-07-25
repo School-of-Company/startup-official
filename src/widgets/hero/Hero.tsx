@@ -38,7 +38,10 @@ export default function Hero() {
   };
 
   return (
-    <section id="top" className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32">
+    <section
+      id="top"
+      className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32"
+    >
       <Parallax speed={0.4} className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-hero-glow" />
       </Parallax>
@@ -48,7 +51,8 @@ export default function Hero() {
           backgroundImage:
             "linear-gradient(to right, rgba(120,130,155,0.16) 1px, transparent 1px), linear-gradient(to bottom, rgba(120,130,155,0.16) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
-          maskImage: "radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 80%)",
+          maskImage:
+            "radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 80%)",
           WebkitMaskImage:
             "radial-gradient(ellipse 60% 50% at 50% 0%, black 40%, transparent 80%)",
         }}
@@ -73,9 +77,9 @@ export default function Hero() {
           custom={1}
           className="max-w-5xl text-balance text-[2.5rem] font-bold leading-[1.15] tracking-tight sm:text-6xl sm:leading-[1.1] lg:text-[4.25rem] lg:tracking-[-0.03em]"
         >
-          배우는 데서 그치지 않고,
+          <span className="text-gradient">스타트업 동아리</span>와 함께 할
           <br />
-          <span className="text-gradient">진짜 쓰이는 서비스</span>를 만듭니다.
+          10기 팀원을 모집합니다.
         </motion.h1>
 
         <motion.p
@@ -85,8 +89,8 @@ export default function Hero() {
           custom={2}
           className="mt-6 max-w-xl text-balance text-base leading-relaxed text-muted sm:text-lg"
         >
-          스타트업 동아리는 외주 프로젝트를 직접 수주·설계·개발하며 지역 공공기관과 협업해
-          실사용 서비스를 만드는 실전 중심 개발 동아리입니다.
+          스타트업 동아리는 외주 프로젝트를 직접 수주·설계·개발하며 지역
+          공공기관과 협업해 실사용 서비스를 만드는 실전 중심 개발 동아리입니다.
           실제 사용자를 위한 프로덕트를 처음부터 끝까지 직접 만듭니다.
         </motion.p>
 
