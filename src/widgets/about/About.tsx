@@ -59,9 +59,9 @@ function FocusCard({
   body: ReactNode;
 }) {
   const d = useTransform(cursor, (c) => c - index);
-  const x = useTransform(d, [-1, 0, 1, 2], [420, 0, -300, -380]);
-  const scale = useTransform(d, [-1, 0, 1, 2], [0.82, 1, 0.8, 0.68]);
-  const opacity = useTransform(d, [-1, -0.35, 0, 1, 2], [0, 1, 1, 0.4, 0.2]);
+  const x = useTransform(d, [-1, 0, 1, 2], [560, 0, -420, -520]);
+  const scale = useTransform(d, [-1, 0, 1, 2], [0.86, 1, 0.84, 0.72]);
+  const opacity = useTransform(d, [-1, -0.4, 0, 0.55, 1, 2], [0, 1, 1, 0.15, 0, 0]);
   const zIndex = useTransform(d, (v) => Math.round(100 - Math.abs(v) * 10));
 
   return (
@@ -137,7 +137,7 @@ function AboutFocusCarousel() {
   const cursor = useTransform(scrollYProgress, [0, 1], [0, N - 1]);
 
   return (
-    <section id="about" ref={containerRef} className="relative scroll-mt-16 h-auto sm:h-[300vh]">
+    <section id="about" ref={containerRef} className="relative scroll-mt-16 h-auto sm:h-[380vh]">
       <div className="static flex h-auto flex-col justify-start overflow-visible py-16 sm:sticky sm:top-16 sm:h-[calc(100vh-4rem)] sm:justify-center sm:overflow-hidden sm:py-16">
         <SectionGlow className="-left-40 -top-40 h-[420px] w-[420px]" />
 

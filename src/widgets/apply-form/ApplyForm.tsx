@@ -379,7 +379,7 @@ export default function ApplyForm() {
                   required
                   value={values.position}
                   onChange={set("position")}
-                  options={TRACKS.map((track) => track.name)}
+                  options={[...new Set(TRACKS.map((track) => track.name))]}
                 />
                 <Field
                   label="Github Profile URL"

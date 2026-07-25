@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { APPLY_URL, GENERATION } from "@/shared/config";
+import { APPLY_URL } from "@/shared/config";
 import { Parallax } from "@/shared/ui";
 import { useReducedMotionSafe } from "@/shared/lib";
 
@@ -105,13 +105,13 @@ export default function Hero() {
             href={APPLY_URL ?? "/apply"}
             className="w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
           >
-            {GENERATION} 지원하기
+            지원하기
           </a>
           <a
             href="#projects"
             className="w-full rounded-full border border-border px-8 py-4 text-sm font-semibold text-fg transition-colors hover:bg-surface sm:w-auto"
           >
-            우리가 만든 서비스 보기
+            운영중인 서비스 보기
           </a>
         </motion.div>
       </div>

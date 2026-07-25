@@ -9,8 +9,8 @@ export default function Projects() {
       <div className="relative mx-auto max-w-wide px-6 sm:px-8 lg:px-10">
         <SectionHeading
           eyebrow="Track Record"
-          title="우리가 실제로 만든 서비스"
-          description="스타트업 동아리 프로젝트는 실제 사용자와 함께 운영됩니다."
+          title="운영중인 서비스"
+          description="스타트업 프로젝트는 실제 사용자와 함께 운영됩니다."
         />
 
         <div className="grid gap-8 sm:grid-cols-2">
