@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${BRAND}`,
     description: `${BRAND}에서 10기 인원을 대상으로 5세대 팀원을 모집합니다`,
+    siteName: BRAND,
     type: "website",
   },
 };
