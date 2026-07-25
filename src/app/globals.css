@@ -1,0 +1,140 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css')
+layer(base);
+
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-bg: rgb(var(--bg));
+  --color-surface: rgb(var(--surface));
+  --color-surface2: rgb(var(--surface2));
+  --color-border: rgb(var(--border));
+  --color-fg: rgb(var(--fg));
+  --color-muted: rgb(var(--muted));
+
+  --color-accent: #ff3b5c;
+  --color-accent-soft: rgb(var(--accent-soft));
+  --color-accent-dim: rgb(var(--accent-dim));
+
+  --font-sans:
+    Pretendard Variable, Pretendard, -apple-system, system-ui, sans-serif;
+
+  --background-image-hero-glow: radial-gradient(
+    60% 50% at 50% 0%,
+    rgba(255, 59, 92, 0.38) 0%,
+    rgba(255, 59, 92, 0) 70%
+  );
+  --background-image-cta-gradient: linear-gradient(
+    135deg,
+    #ff3b5c 0%,
+    #c81e3a 100%
+  );
+  --background-image-card-sheen: linear-gradient(
+    135deg,
+    rgba(255, 59, 92, 0.1) 0%,
+    rgba(255, 59, 92, 0) 55%
+  );
+
+  --radius-card: 20px;
+  --radius-panel: 24px;
+
+  --animate-marquee: marquee 28s linear infinite;
+
+  --container-content: 1320px;
+  --container-wide: 1520px;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+:root {
+  --bg: 255 255 255;
+  --surface: 246 247 249;
+  --surface2: 236 238 242;
+  --border: 225 228 234;
+  --fg: 13 13 18;
+  --muted: 100 105 122;
+  --accent-soft: 190 18 60;
+  --accent-dim: 254 205 211;
+  --grad-a: 13 13 18;
+  --grad-b: 190 18 60;
+  --grad-c: 255 59 92;
+}
+
+.dark {
+  --bg: 8 8 11;
+  --surface: 15 15 20;
+  --surface2: 21 21 28;
+  --border: 34 34 43;
+  --fg: 243 243 246;
+  --muted: 140 140 154;
+  --accent-soft: 255 122 138;
+  --accent-dim: 136 25 45;
+  --grad-a: 255 255 255;
+  --grad-b: 255 179 189;
+  --grad-c: 255 122 138;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::selection {
+  background: rgba(255, 59, 92, 0.35);
+  color: rgb(var(--fg));
+}
+
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--grad-a)) 0%,
+    rgb(var(--grad-b)) 60%,
+    rgb(var(--grad-c)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Translucent chrome (header, mobile menu) falls back to a solid surface
+   when the user asks for less transparency. */
+@media (prefers-reduced-transparency: reduce) {
+  .frost {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgb(var(--bg)) !important;
+  }
+}
