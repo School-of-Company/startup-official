@@ -79,7 +79,7 @@ export default function StickyApplyBar() {
           스타트업 동아리 팀원 지원하기
         </p>
         <a
-          href={APPLY_URL ?? "#apply"}
+          href={APPLY_URL ?? "/apply"}
           className="shrink-0 rounded-full bg-linear-to-r from-accent to-accent-soft px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
         >
           지원하기

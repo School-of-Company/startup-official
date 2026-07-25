@@ -37,10 +37,10 @@ export default function Header() {
   const menuSlide = reduceMotion ? 0 : -12;
 
   const scrollToHash = (hash: string) => (e: MouseEvent) => {
+    const target = document.querySelector(hash);
+    if (!target) return;
     e.preventDefault();
-    document
-      .querySelector(hash)
-      ?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
   };
 
   return (
@@ -54,7 +54,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <a href="#top" className="flex items-center" aria-label="홈으로 이동">
+        <a href="/#top" className="flex items-center" aria-label="홈으로 이동">
           <Logo className="h-5 w-auto text-fg sm:h-6" />
         </a>
 
@@ -62,7 +62,7 @@ export default function Header() {
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={`/${item.href}`}
               onClick={scrollToHash(item.href)}
               className="text-sm text-muted transition-colors hover:text-fg"
             >
@@ -74,7 +74,7 @@ export default function Header() {
         <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
           <a
-            href={APPLY_URL ?? "#apply"}
+            href={APPLY_URL ?? "/apply"}
             className="rounded-full bg-fg px-4 py-2 text-sm font-medium text-bg transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
           >
             지원하기
@@ -125,7 +125,7 @@ export default function Header() {
               {NAV_ITEMS.map((item, i) => (
                 <motion.a
                   key={item.href}
-                  href={item.href}
+                  href={`/${item.href}`}
                   onClick={(e) => {
                     setMenuOpen(false);
                     scrollToHash(item.href)(e);
@@ -143,7 +143,7 @@ export default function Header() {
               ))}
             </nav>
             <a
-              href={APPLY_URL ?? "#apply"}
+              href={APPLY_URL ?? "/apply"}
               onClick={() => setMenuOpen(false)}
               className="mt-8 w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-4 py-4 text-center text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
             >
