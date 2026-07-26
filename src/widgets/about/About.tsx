@@ -10,7 +10,11 @@ import { useIsMobile, useReducedMotionSafe } from "@/shared/lib";
 const STORY = [
   {
     index: "01",
-    title: "학생 개발팀, 그 이상의 서비스를 만듭니다.",
+    title: (
+      <>
+        학생 개발팀, 그 이상의 <span className="text-accent-soft">서비스</span>를 만듭니다.
+      </>
+    ),
     body: (
       <>
         우리는 교실 안의 배움에 머무르지 않고, 실제 현장에서 사용되는 서비스를 만듭니다.
@@ -20,7 +24,11 @@ const STORY = [
   },
   {
     index: "02",
-    title: "의뢰받은 프로젝트를, 결과물로 증명합니다.",
+    title: (
+      <>
+        의뢰받은 프로젝트를, <span className="text-accent-soft">결과물</span>로 증명합니다.
+      </>
+    ),
     body: (
       <>
         스타트업 동아리는 외주 프로젝트를 직접 수주·설계·개발하며, 지역 공공기관과 협업해
@@ -31,7 +39,11 @@ const STORY = [
   },
   {
     index: "03",
-    title: "성장을 갈망하는 사람들이 모여, 변화를 만들어냅니다",
+    title: (
+      <>
+        성장을 갈망하는 사람들이 모여, <span className="text-accent-soft">변화</span>를 만들어냅니다
+      </>
+    ),
     body: (
       <>
         우리는 각자의 가능성을 실제 결과로 증명하기 위해 모였습니다. 단순한 개발을 넘어,{" "}
@@ -55,7 +67,7 @@ function FocusCard({
   cursor: MotionValue<number>;
   index: number;
   label: string;
-  title: string;
+  title: ReactNode;
   body: ReactNode;
 }) {
   const d = useTransform(cursor, (c) => c - index);
@@ -99,7 +111,7 @@ function StaticCard({
   body,
 }: {
   label: string;
-  title: string;
+  title: ReactNode;
   body: ReactNode;
 }) {
   return (
