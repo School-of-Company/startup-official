@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { Reveal, SectionHeading, SectionGlow } from "@/shared/ui";
-import { useReducedMotionSafe } from "@/shared/lib";
+import { useIsMobile, useReducedMotionSafe } from "@/shared/lib";
 
 const STORY = [
   {
@@ -187,5 +187,6 @@ function AboutStatic() {
 
 export default function About() {
   const reduceMotion = useReducedMotionSafe();
-  return reduceMotion ? <AboutStatic /> : <AboutFocusCarousel />;
+  const isMobile = useIsMobile();
+  return reduceMotion || isMobile ? <AboutStatic /> : <AboutFocusCarousel />;
 }

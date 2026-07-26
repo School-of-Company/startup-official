@@ -5,6 +5,7 @@ export type Project = {
   metric: string;
   image: string;
   href?: string;
+  storeLinks?: { ios?: string; android?: string };
 };
 
 export const PROJECTS: Project[] = [
@@ -23,5 +24,9 @@ export const PROJECTS: Project[] = [
     description: "가상의 화폐 '광산'을 거래할 수 있는 광산구 주민 대상 플랫폼입니다.",
     metric: "시민화폐 광산 앱(안드로이드, iOS)",
     image: "/projects/gwangsan.png",
+    storeLinks: {
+      ios: "https://apps.apple.com/ca/app/%EC%8B%9C%EB%AF%BC%ED%99%94%ED%8F%90-%EA%B4%91%EC%82%B0/id6758655368",
+      android: "https://play.google.com/store/apps/details?id=gwangsan.io.kr&hl=ko",
+    },
   },
 ];

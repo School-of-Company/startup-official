@@ -71,11 +71,11 @@ export default function StickyApplyBar() {
           opacity: { duration: reduceMotion ? 0.15 : 0.4 },
           y: { duration: reduceMotion ? 0.15 : 0.4 },
         }}
-        className={`frost z-40 mx-auto flex w-full max-w-xl items-center justify-between gap-4 rounded-card border border-border bg-bg/20 px-6 py-4 backdrop-blur-xl ${
-          docked ? "" : "fixed inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6"
+        className={`frost z-40 mx-auto flex max-w-xl items-center justify-between gap-4 rounded-card border border-border bg-bg/20 px-6 py-4 backdrop-blur-xl ${
+          docked ? "w-full" : "fixed inset-x-6 bottom-4 sm:inset-x-8 sm:bottom-6 lg:inset-x-10"
         }`}
       >
-        <p className="text-sm font-semibold text-fg sm:text-base">
+        <p className="min-w-0 text-sm font-semibold text-fg sm:text-base">
           스타트업 동아리 팀원 지원하기
         </p>
         <a

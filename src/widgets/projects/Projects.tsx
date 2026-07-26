@@ -1,8 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
 import { PROJECTS } from "@/entities/project";
+import type { Project } from "@/entities/project";
+import { useOS } from "@/shared/lib";
+
+function resolveHref(project: Project, os: "ios" | "android" | "other") {
+  const { storeLinks } = project;
+  if (!storeLinks) return project.href;
+  if (os === "ios" && storeLinks.ios) return storeLinks.ios;
+  if (os === "android" && storeLinks.android) return storeLinks.android;
+  return storeLinks.ios || storeLinks.android || project.href;
+}
 
 export default function Projects() {
+  const os = useOS();
+
   return (
     <section id="projects" className="relative scroll-mt-16 overflow-hidden bg-surface/30 py-24 sm:py-32">
       <SectionGlow className="-bottom-40 -right-32 h-[460px] w-[460px]" />
@@ -16,6 +30,7 @@ export default function Projects() {
 
         <div className="grid gap-8 sm:grid-cols-2">
           {PROJECTS.map((project, i) => {
+            const href = resolveHref(project, os);
             const Card = (
               <div className="group h-full overflow-hidden rounded-card bg-surface transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10">
                 <div className="relative aspect-video overflow-hidden bg-surface2">
@@ -42,7 +57,7 @@ export default function Projects() {
                       </p>
                       <h3 className="mt-2 text-xl font-semibold">{project.name}</h3>
                     </div>
-                    {project.href && (
+                    {href && (
                       <span className="mt-1 text-muted transition-colors group-hover:text-fg">
                         ↗
                       </span>
@@ -56,8 +71,8 @@ export default function Projects() {
 
             return (
               <Reveal key={project.name} delay={(i % 2) * 0.08}>
-                {project.href ? (
-                  <a href={project.href} target="_blank" rel="noopener noreferrer" className="block h-full">
+                {href ? (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
                     {Card}
                   </a>
                 ) : (
