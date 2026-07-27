@@ -80,7 +80,7 @@ export default function StickyApplyBar() {
         </p>
         <a
           href={APPLY_URL ?? "/apply"}
-          className="shrink-0 rounded-full bg-linear-to-r from-accent to-accent-soft px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
+          className="shrink-0 rounded-full bg-linear-to-r from-accent to-accent-soft px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
         >
           지원하기
         </a>

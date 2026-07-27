@@ -49,7 +49,7 @@ export default function Talent() {
       id="talent"
       className="relative scroll-mt-16 overflow-hidden py-24 sm:py-32"
     >
-      <SectionGlow className="-right-40 top-10 h-[420px] w-[420px]" />
+      <SectionGlow className="-right-32 top-10 h-80 w-80" opacity={0.15} />
 
       <div className="relative mx-auto max-w-wide px-6 sm:px-8 lg:px-10">
         <SectionHeading
@@ -65,10 +65,10 @@ export default function Talent() {
                 style={{
                   background: `linear-gradient(${trait.angle}deg, rgb(var(--talent-accent)) 15%, var(--color-surface) 85%)`,
                 }}
-                className="group flex h-full flex-col items-center rounded-card p-8 text-center text-fg [--talent-accent:255_122_138] transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 dark:[--talent-accent:190_18_60]"
+                className="group flex h-full flex-col items-center rounded-card p-8 text-center text-fg [--talent-accent:210_35_75] transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/20 dark:[--talent-accent:190_18_60]"
               >
                 <h3 className="text-2xl font-extrabold">{trait.title}</h3>
-                <div className="flex flex-1 items-center justify-center py-10 transition-transform duration-300 group-hover:scale-110">
+                <div className="flex flex-1 items-center justify-center py-10 text-white transition-transform duration-300 group-hover:scale-110">
                   {trait.icon}
                 </div>
                 <p className="text-base font-semibold leading-relaxed opacity-80">

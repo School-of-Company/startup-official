@@ -308,7 +308,7 @@ export default function ApplyForm() {
             <Reveal delay={0.24}>
               <a
                 href="/careers"
-                className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
+                className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
               >
                 스타트업 동아리 홈페이지로 가기
               </a>
@@ -409,7 +409,7 @@ export default function ApplyForm() {
 
               <button
                 type="submit"
-                className="mt-2 w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out hover:scale-[1.03] active:scale-[0.98]"
+                className="mt-2 w-full rounded-xl bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
               >
                 지원서 제출하기
               </button>
