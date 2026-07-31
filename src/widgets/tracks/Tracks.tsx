@@ -181,6 +181,10 @@ export default function Tracks() {
           {TRACKS.map((track, i) => (
             <Reveal key={track.key} delay={i * 0.08}>
               <div className="group relative flex h-full flex-col overflow-hidden rounded-card bg-surface p-8 transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -bottom-6 -right-6 h-20 w-20 rounded-full bg-accent/60 blur-2xl"
+                />
                 {TRACK_ART[track.key]}
                 <div className="relative z-10 mb-8">
                   <h3 className="text-xl font-semibold">{track.name}</h3>

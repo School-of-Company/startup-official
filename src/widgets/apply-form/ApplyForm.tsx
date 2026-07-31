@@ -65,7 +65,7 @@ function Field({
   onChange: (value: string) => void;
 }) {
   return (
-    <label className="block">
+    <label id={`field-${name}`} className="block">
       <FieldLabel label={label} required={required} />
       <input
         name={name}
@@ -115,7 +115,7 @@ function SelectField({
   }, [open]);
 
   return (
-    <div ref={rootRef} className="relative block">
+    <div ref={rootRef} id={`field-${name}`} className="relative block">
       <FieldLabel label={label} required={required} />
       <button
         type="button"
@@ -197,8 +197,8 @@ function SelectField({
         )}
       </AnimatePresence>
 
-      {/* Visually hidden but real <select> so the browser's native required-field
-          validation still fires on submit; the button above is the actual UI. */}
+      {/* Visually hidden but real <select> so the constraint-validation API can
+          detect this field as required; the button above is the actual UI. */}
       <select
         name={name}
         required={required}
@@ -242,7 +242,7 @@ function TextareaField({
   }, [value]);
 
   return (
-    <label className="block">
+    <label id={`field-${name}`} className="block">
       <FieldLabel label={label} required={required} />
       <textarea
         ref={ref}
@@ -268,15 +268,70 @@ function FormCard({ children }: { children: ReactNode }) {
   );
 }
 
+function Toast({ message }: { message: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -16 }}
+      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+      className="frost fixed inset-x-6 top-24 z-60 mx-auto flex max-w-sm items-center justify-center rounded-xl border-2 border-accent! bg-bg/20 px-5 py-3.5 text-center text-sm font-semibold text-fg shadow-[0_16px_40px_-16px_rgba(0,0,0,0.4)] backdrop-blur-xl sm:inset-x-8"
+    >
+      {message}
+    </motion.div>
+  );
+}
+
+const FIELD_LABELS: Record<keyof Values, string> = {
+  studentId: "학번",
+  name: "이름",
+  intro: "자기소개",
+  motivation: "지원 동기",
+  goal: "포부",
+  position: "포지션",
+  github: "Github Profile URL",
+  skills: "자신있게 설명 가능한 기술",
+};
+
 export default function ApplyForm() {
   const [values, setValues] = useState<Values>(INITIAL_VALUES);
   const [submitted, setSubmitted] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const set = (key: keyof Values) => (value: string) =>
     setValues((prev) => ({ ...prev, [key]: value }));
 
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 3000);
+    return () => clearTimeout(timer);
+  }, [toast]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    const form = formRef.current;
+    const invalid = form?.querySelector<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >(":invalid");
+
+    if (invalid) {
+      const key = invalid.name as keyof Values;
+      const label = FIELD_LABELS[key] ?? "입력값";
+      setToast(
+        invalid.validity.valueMissing
+          ? `${label}을 입력해주세요.`
+          : `${label} 형식을 확인해주세요.`
+      );
+
+      const wrapper = document.getElementById(`field-${key}`);
+      wrapper?.scrollIntoView({ behavior: "smooth", block: "center" });
+      wrapper
+        ?.querySelector<HTMLElement>("input, textarea, button")
+        ?.focus({ preventScroll: true });
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -313,7 +368,9 @@ export default function ApplyForm() {
             />
 
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
+              noValidate
               className="mx-auto flex max-w-2xl flex-col gap-6"
             >
               <FormCard>
@@ -394,6 +451,8 @@ export default function ApplyForm() {
           </>
         )}
       </div>
+
+      <AnimatePresence>{toast && <Toast message={toast} />}</AnimatePresence>
     </section>
   );
 }
