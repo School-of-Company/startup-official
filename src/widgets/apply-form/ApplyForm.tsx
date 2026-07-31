@@ -224,7 +224,6 @@ function TextareaField({
   required,
   value,
   onChange,
-  rows = 5,
 }: {
   label: string;
   name: string;
@@ -232,47 +231,38 @@ function TextareaField({
   required?: boolean;
   value: string;
   onChange: (value: string) => void;
-  rows?: number;
 }) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [value]);
+
   return (
     <label className="block">
       <FieldLabel label={label} required={required} />
       <textarea
+        ref={ref}
         name={name}
         required={required}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        rows={rows}
-        className={`${INPUT_CLASS} resize-y leading-relaxed`}
+        rows={1}
+        className={`${INPUT_CLASS} resize-none overflow-hidden leading-relaxed`}
       />
     </label>
   );
 }
 
-function FormSection({
-  index,
-  title,
-  gridClassName = "sm:grid-cols-2",
-  children,
-}: {
-  index: string;
-  title: string;
-  gridClassName?: string;
-  children: ReactNode;
-}) {
+function FormCard({ children }: { children: ReactNode }) {
   return (
     <Reveal>
-      <section className="rounded-card border border-border bg-surface/40 p-6 sm:p-8">
-        <div className="mb-6 flex items-baseline gap-3">
-          <span className="text-sm font-semibold tracking-[0.2em] text-accent-soft">
-            {index}
-          </span>
-          <h2 className="text-lg font-bold tracking-tight sm:text-xl">
-            {title}
-          </h2>
-        </div>
-        <div className={`grid gap-5 ${gridClassName}`}>{children}</div>
+      <section className="flex flex-col gap-5 rounded-card border border-border bg-surface/40 p-6 sm:p-8">
+        {children}
       </section>
     </Reveal>
   );
@@ -326,11 +316,11 @@ export default function ApplyForm() {
               onSubmit={handleSubmit}
               className="mx-auto flex max-w-2xl flex-col gap-6"
             >
-              <FormSection index="01" title="기본 정보">
+              <FormCard>
                 <Field
                   label="학번"
                   name="studentId"
-                  placeholder="예: 30412"
+                  placeholder="예: 2215"
                   required
                   value={values.studentId}
                   onChange={set("studentId")}
@@ -343,13 +333,6 @@ export default function ApplyForm() {
                   value={values.name}
                   onChange={set("name")}
                 />
-              </FormSection>
-
-              <FormSection
-                index="02"
-                title="자기소개서"
-                gridClassName="grid-cols-1"
-              >
                 <TextareaField
                   label="자기소개"
                   name="intro"
@@ -374,9 +357,6 @@ export default function ApplyForm() {
                   value={values.goal}
                   onChange={set("goal")}
                 />
-              </FormSection>
-
-              <FormSection index="03" title="지원 포지션 및 기술">
                 <SelectField
                   label="포지션"
                   name="position"
@@ -394,18 +374,15 @@ export default function ApplyForm() {
                   value={values.github}
                   onChange={set("github")}
                 />
-                <div className="sm:col-span-2">
-                  <TextareaField
-                    label="자신있게 설명 가능한 기술"
-                    name="skills"
-                    placeholder="깊이 있게 이해하고 있어 자신 있게 설명할 수 있는 기술을 작성해주세요."
-                    required
-                    value={values.skills}
-                    onChange={set("skills")}
-                    rows={4}
-                  />
-                </div>
-              </FormSection>
+                <TextareaField
+                  label="자신있게 설명 가능한 기술"
+                  name="skills"
+                  placeholder="깊이 있게 이해하고 있어 자신 있게 설명할 수 있는 기술을 작성해주세요."
+                  required
+                  value={values.skills}
+                  onChange={set("skills")}
+                />
+              </FormCard>
 
               <button
                 type="submit"
