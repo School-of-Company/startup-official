@@ -2,14 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { APPLY_URL } from "@/shared/config";
-import { useReducedMotionSafe } from "@/shared/lib";
+import { APPLY_URL, APPLICATION_DEADLINE } from "@/shared/config";
+import { useCountdown, useReducedMotionSafe, type TimeLeft } from "@/shared/lib";
+
+function formatCountdown(t: TimeLeft) {
+  if (t.isOver) return "모집이 마감되었습니다";
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `마감까지 ${t.days}일 ${pad(t.hours)}:${pad(t.minutes)}:${pad(t.seconds)}`;
+}
 
 export default function StickyApplyBar() {
   const anchorRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const [docked, setDocked] = useState(false);
   const reduceMotion = useReducedMotionSafe();
+  const timeLeft = useCountdown(APPLICATION_DEADLINE);
 
   // Cached layout measurements. Only ever redone on resize/content-size-change,
   // never inside the scroll path.
@@ -55,6 +62,8 @@ export default function StickyApplyBar() {
     setDocked(naturalTop <= targetTop);
   });
 
+  if (timeLeft.isOver) return null;
+
   return (
     <div
       id="apply"
@@ -75,12 +84,17 @@ export default function StickyApplyBar() {
           docked ? "w-full" : "fixed inset-x-6 bottom-4 sm:inset-x-8 sm:bottom-6 lg:inset-x-10"
         }`}
       >
-        <p className="min-w-0 text-sm font-semibold text-fg sm:text-base">
-          스타트업 동아리 팀원 지원하기
-        </p>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-semibold text-fg sm:text-base">
+            스타트업 팀원 지원하기
+          </p>
+          <p className="mt-0.5 truncate text-xs tabular-nums text-muted sm:text-sm">
+            {formatCountdown(timeLeft)}
+          </p>
+        </div>
         <a
           href={APPLY_URL ?? "/apply"}
-          className="shrink-0 rounded-full bg-linear-to-r from-accent to-accent-soft px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
+          className="shrink-0 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
         >
           지원하기
         </a>

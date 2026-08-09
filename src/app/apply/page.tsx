@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { Header } from "@/widgets/header";
 import { ApplyForm } from "@/widgets/apply-form";
 import { Footer } from "@/widgets/footer";
-import { BRAND } from "@/shared/config";
+import { BRAND, isApplicationDeadlinePassed } from "@/shared/config";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "지원하기",
-  description: `${BRAND} 동아리 신입 부원 지원서 작성 페이지입니다.`,
+  description: `${BRAND} 지원 작성 페이지입니다.`,
 };
 
 export default function ApplyPage() {
+  if (isApplicationDeadlinePassed()) {
+    redirect("/careers");
+  }
+
   return (
     <>
       <Header />

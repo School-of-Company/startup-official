@@ -7,7 +7,7 @@ export default function Footer() {
         <div>
           <Logo idPrefix="footer-logo" className="h-4 w-auto text-fg" />
           <p className="mt-2 text-xs text-muted">
-            광주소프트웨어마이스터고등학교 스타트업 동아리
+            &copy; {new Date().getFullYear()} 스타트업. All rights reserved.
           </p>
         </div>
 

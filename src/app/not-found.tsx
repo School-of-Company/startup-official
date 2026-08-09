@@ -28,7 +28,7 @@ export default function NotFound() {
               주소가 잘못되었거나 이동/삭제된 페이지예요.
             </p>
 
-            <BackButton className="mt-10 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]">
+            <BackButton className="mt-10 inline-block rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]">
               이전 페이지로 돌아가기
             </BackButton>
           </div>

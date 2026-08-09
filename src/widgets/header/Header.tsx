@@ -153,7 +153,7 @@ export default function Header() {
             <a
               href={APPLY_URL ?? "/apply"}
               onClick={() => setMenuOpen(false)}
-              className="mt-8 w-full rounded-xl bg-linear-to-r from-accent to-accent-soft px-4 py-4 text-center text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
+              className="mt-8 w-full rounded-xl bg-accent px-4 py-4 text-center text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
             >
               지원하기
             </a>

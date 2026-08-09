@@ -174,7 +174,7 @@ export default function Tracks() {
         <SectionHeading
           eyebrow="Recruitment"
           title="모집 포지션"
-          description="스타트업 동아리와 함께할 10기 팀원을 아래와 같이 모집합니다."
+          description="스타트업과 함께할 10기 팀원을 아래와 같이 모집합니다."
         />
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

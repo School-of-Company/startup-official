@@ -347,15 +347,15 @@ export default function ApplyForm() {
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-6 text-base leading-relaxed text-fg">
-                스타트업 동아리에 소중한 시간 내어 지원해 주셔서 감사드립니다.
+                스타트업에 소중한 시간 내어 지원해 주셔서 감사드립니다.
               </p>
             </Reveal>
             <Reveal delay={0.24}>
               <a
                 href="/careers"
-                className="mt-8 inline-block rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
+                className="mt-8 inline-block rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
               >
-                스타트업 동아리 홈페이지로 가기
+                스타트업 홈페이지로 가기
               </a>
             </Reveal>
           </div>
@@ -364,7 +364,7 @@ export default function ApplyForm() {
             <SectionHeading
               eyebrow="Application"
               title="지원서 작성"
-              description={`${GENERATION} 스타트업 동아리 팀원 모집에 지원해주셔서 감사합니다. 아래 내용을 빠짐없이 작성해주세요.`}
+              description={`${GENERATION} 스타트업 팀원 모집에 지원해주셔서 감사합니다. 아래 내용을 빠짐없이 작성해주세요.`}
             />
 
             <form
@@ -401,7 +401,7 @@ export default function ApplyForm() {
                 <TextareaField
                   label="지원 동기"
                   name="motivation"
-                  placeholder="스타트업 동아리에 지원하게 된 계기를 알려주세요."
+                  placeholder="스타트업에 지원하게 된 계기를 알려주세요."
                   required
                   value={values.motivation}
                   onChange={set("motivation")}
@@ -409,7 +409,7 @@ export default function ApplyForm() {
                 <TextareaField
                   label="포부"
                   name="goal"
-                  placeholder="동아리 활동을 통해 이루고 싶은 목표를 알려주세요."
+                  placeholder="활동을 통해 이루고 싶은 목표를 알려주세요."
                   required
                   value={values.goal}
                   onChange={set("goal")}
@@ -443,7 +443,7 @@ export default function ApplyForm() {
 
               <button
                 type="submit"
-                className="mt-2 w-full rounded-xl bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
+                className="mt-2 w-full rounded-xl bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
               >
                 지원서 제출하기
               </button>

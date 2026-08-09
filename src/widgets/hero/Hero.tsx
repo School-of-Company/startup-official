@@ -49,7 +49,7 @@ export default function Hero() {
           className="mb-6 inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2 text-xs font-medium text-muted"
         >
           <span className="h-2 w-2 rounded-full bg-accent-soft" />
-          5세대 스타트업 동아리 팀원 공개 채용
+          5세대 스타트업 팀원 공개 채용
         </motion.div>
 
         <motion.h1
@@ -59,7 +59,7 @@ export default function Hero() {
           custom={1}
           className="max-w-5xl text-balance text-[2.5rem] font-bold leading-[1.15] tracking-tight sm:text-6xl sm:leading-[1.1] lg:text-[4.25rem] lg:tracking-[-0.03em]"
         >
-          <span className="text-gradient">스타트업 동아리</span>와 함께 할
+          <span className="text-gradient">스타트업</span>과 함께 할
           <br />
           10기 팀원을 모집합니다.
         </motion.h1>
@@ -71,8 +71,8 @@ export default function Hero() {
           custom={2}
           className="mt-6 max-w-xl text-balance text-base leading-relaxed text-muted sm:text-lg"
         >
-          스타트업 동아리는 외주 프로젝트를 직접 수주·설계·개발하며 지역
-          공공기관과 협업해 실사용 서비스를 만드는 실전 중심 개발 동아리입니다.
+          스타트업은 외주 프로젝트를 직접 수주·설계·개발하며 지역
+          공공기관과 협업해 실사용 서비스를 만드는 실전 중심 개발팀입니다.
           실제 사용자를 위한 프로덕트를 처음부터 끝까지 직접 만듭니다.
         </motion.p>
 
@@ -85,7 +85,7 @@ export default function Hero() {
         >
           <a
             href={APPLY_URL ?? "/apply"}
-            className="w-full rounded-full bg-linear-to-r from-accent to-accent-soft px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98] sm:w-auto"
+            className="w-full rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98] sm:w-auto"
           >
             지원하기
           </a>
