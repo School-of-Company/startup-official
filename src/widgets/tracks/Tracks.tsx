@@ -8,7 +8,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 28 27"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
     >
       <rect
         width="15.3553"
@@ -71,7 +71,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 36 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
     >
       <path
         d="M33.209 11.1738L29.5557 14.8262L29.5566 14.8271L18.3838 26L18.3828 25.999L18.3818 26L7.20898 14.8271V14.8262L3.55664 11.1738L14.7295 0L18.3828 3.65332L22.0361 0L33.209 11.1738Z"
@@ -101,7 +101,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 30 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
     >
       <path
         fillRule="evenodd"
@@ -121,7 +121,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 34 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
     >
       <path
         opacity="0.45"
@@ -208,7 +208,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 32 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
     >
       <path
         d="M15.5 24C21.8513 24 27 18.8513 27 12.5C27 6.14873 21.8513 1 15.5 1C9.14873 1 4 6.14873 4 12.5C4 18.8513 9.14873 24 15.5 24Z"
@@ -249,19 +249,9 @@ function TrackCard({
           <h3 className="text-xl font-semibold">{track.name}</h3>
           <p className="mt-1 text-sm text-accent-soft">{track.enName}</p>
         </div>
-        <p className="relative z-10 mb-8 flex-1 text-sm leading-relaxed text-muted">
+        <p className="relative z-10 flex-1 text-sm leading-relaxed text-muted">
           {track.description}
         </p>
-        <div className="relative z-10 flex flex-wrap gap-2">
-          {track.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full bg-surface2 px-3 py-1 text-xs text-muted"
-            >
-              {s}
-            </span>
-          ))}
-        </div>
       </div>
     </Reveal>
   );

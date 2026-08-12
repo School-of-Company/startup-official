@@ -2,10 +2,10 @@
 
 import { useRef } from "react";
 import type { ReactNode } from "react";
-import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
+import { cubicBezier, motion, useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { Reveal, SectionHeading, SectionGlow } from "@/shared/ui";
-import { useIsMobile, useReducedMotionSafe } from "@/shared/lib";
+import { EASE_IN_OUT, STAGGER_CHILD, useIsMobile, useReducedMotionSafe } from "@/shared/lib";
 
 const STORY = [
   {
@@ -71,8 +71,13 @@ function FocusCard({
   body: ReactNode;
 }) {
   const d = useTransform(cursor, (c) => c - index);
-  const x = useTransform(d, [-1, 0, 1, 2], [560, 0, -420, -520]);
-  const scale = useTransform(d, [-1, 0, 1, 2], [0.86, 1, 0.84, 0.72]);
+  const easeInOut = cubicBezier(...EASE_IN_OUT);
+  const x = useTransform(d, [-1, 0, 1, 2], [560, 0, -420, -520], {
+    ease: [easeInOut, easeInOut, easeInOut],
+  });
+  const scale = useTransform(d, [-1, 0, 1, 2], [0.86, 1, 0.84, 0.72], {
+    ease: [easeInOut, easeInOut, easeInOut],
+  });
   const opacity = useTransform(d, [-1, -0.4, 0, 0.55, 1, 2], [0, 1, 1, 0.15, 0, 0]);
   const zIndex = useTransform(d, (v) => Math.round(100 - Math.abs(v) * 10));
   // Combined into one `transform` string instead of separate x/scale motion
@@ -109,13 +114,15 @@ function StaticCard({
   label,
   title,
   body,
+  delay,
 }: {
   label: string;
   title: ReactNode;
   body: ReactNode;
+  delay?: number;
 }) {
   return (
-    <Reveal>
+    <Reveal delay={delay}>
       <div className="relative flex h-full flex-col overflow-hidden rounded-card bg-surface p-8">
         <span
           aria-hidden
@@ -188,8 +195,14 @@ function AboutStatic() {
         <AboutHeader />
 
         <div className="grid gap-8 sm:grid-cols-3">
-          {STORY.map((block) => (
-            <StaticCard key={block.index} label={block.index} title={block.title} body={block.body} />
+          {STORY.map((block, i) => (
+            <StaticCard
+              key={block.index}
+              label={block.index}
+              title={block.title}
+              body={block.body}
+              delay={i * STAGGER_CHILD}
+            />
           ))}
         </div>
       </div>

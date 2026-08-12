@@ -17,21 +17,25 @@ export default function Projects() {
           {PROJECTS.map((project, i) => (
             <Reveal key={project.slug} delay={(i % 3) * 0.08}>
               <Link href={`/projects/${project.slug}`} className="block h-full">
-                <div className="group h-full overflow-hidden rounded-card bg-surface transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10">
+                <div className="group relative h-full overflow-hidden rounded-card bg-surface transition-[scale,translate] duration-300 ease-out hover:duration-200 hover:-translate-y-1 active:scale-[0.985]">
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-card opacity-0 shadow-2xl shadow-accent/10 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                  />
                   <div className="relative aspect-video overflow-hidden bg-surface2">
                     <Image
                       src={project.image}
                       alt={`${project.name} 서비스 화면`}
                       fill
                       sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                     />
                   </div>
 
                   <div className="p-5">
                     <div className="mb-3 flex items-start justify-between gap-4">
                       <h3 className="text-lg font-semibold">{project.name}</h3>
-                      <span className="mt-1 text-muted transition-colors group-hover:text-fg">
+                      <span className="mt-1 inline-block text-muted transition-[color,translate] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg">
                         ↗
                       </span>
                     </div>

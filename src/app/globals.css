@@ -39,6 +39,10 @@ layer(base);
   --radius-card: 20px;
   --radius-panel: 24px;
 
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
   --animate-marquee: marquee 28s linear infinite;
 
   --container-content: 1320px;
@@ -114,6 +118,12 @@ body {
   word-break: keep-all;
   overflow-wrap: break-word;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Pretendard hasn't downloaded yet -- keep content hidden so no fallback
+   font is ever shown, then reveal once FONT_SCRIPT flags it as loaded. */
+html:not(.fonts-loaded) body {
+  visibility: hidden;
 }
 
 ::selection {

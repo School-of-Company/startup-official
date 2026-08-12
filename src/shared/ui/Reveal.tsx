@@ -2,10 +2,9 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useReducedMotionSafe } from "@/shared/lib";
+import { DURATION, EASE_OUT, REDUCED_TRANSITION, useReducedMotionSafe } from "@/shared/lib";
 
-const TRANSITION = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
-const REDUCED_TRANSITION = { duration: 0.25, ease: "linear" as const };
+const TRANSITION = { duration: DURATION.reveal, ease: EASE_OUT };
 
 export default function Reveal({
   children,
