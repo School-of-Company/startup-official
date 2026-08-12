@@ -93,7 +93,9 @@ export default function StickyApplyBar() {
           </p>
         </div>
         <a
-          href={APPLY_URL ?? "/apply"}
+          href={APPLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="shrink-0 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
         >
           지원하기

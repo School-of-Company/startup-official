@@ -2,25 +2,24 @@
 
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { APPLY_URL } from "@/shared/config";
 import { ThemeToggle } from "@/features/theme-toggle";
 import { useReducedMotionSafe } from "@/shared/lib";
 import { Logo } from "@/shared/ui";
 
-const HOME_PATH = "/careers";
+const HOME_PATH = "/";
 
 const NAV_ITEMS = [
-  { href: "#about", label: "소개" },
-  { href: "#projects", label: "프로젝트" },
-  { href: "#tracks", label: "모집 분야" },
-  { href: "#talent", label: "인재상" },
+  { path: "/", label: "소개" },
+  { path: "/recruit", label: "모집 안내" },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduceMotion = useReducedMotionSafe();
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,13 +37,6 @@ export default function Header() {
 
   const menuSlide = reduceMotion ? 0 : -12;
 
-  const scrollToHash = (hash: string) => (e: MouseEvent) => {
-    const target = document.querySelector(hash);
-    if (!target) return;
-    e.preventDefault();
-    target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-  };
-
   const scrollToTop = (e: MouseEvent) => {
     if (window.location.pathname !== HOME_PATH) return;
     e.preventDefault();
@@ -61,18 +53,19 @@ export default function Header() {
             : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
+      <div className="relative mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
         <a href={HOME_PATH} onClick={scrollToTop} className="flex items-center" aria-label="홈으로 이동">
           <Logo className="h-5 w-auto text-fg sm:h-6" />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
             <a
-              key={item.href}
-              href={`${HOME_PATH}${item.href}`}
-              onClick={scrollToHash(item.href)}
-              className="text-sm text-muted transition-colors hover:text-fg"
+              key={item.path}
+              href={item.path}
+              className={`text-[17px] font-semibold transition-colors ${
+                pathname === item.path ? "text-fg" : "text-muted hover:text-fg"
+              }`}
             >
               {item.label}
             </a>
@@ -81,12 +74,6 @@ export default function Header() {
 
         <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
-          <a
-            href={APPLY_URL ?? "/apply"}
-            className="rounded-full bg-fg px-4 py-2 text-sm font-medium text-bg transition-transform duration-150 ease-out active:scale-[0.98]"
-          >
-            지원하기
-          </a>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -132,31 +119,23 @@ export default function Header() {
             <nav className="flex flex-col gap-1">
               {NAV_ITEMS.map((item, i) => (
                 <motion.a
-                  key={item.href}
-                  href={`${HOME_PATH}${item.href}`}
-                  onClick={(e) => {
-                    setMenuOpen(false);
-                    scrollToHash(item.href)(e);
-                  }}
+                  key={item.path}
+                  href={item.path}
+                  onClick={() => setMenuOpen(false)}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: reduceMotion ? 0.15 : 0.3,
                     delay: reduceMotion ? 0 : 0.05 + i * 0.05,
                   }}
-                  className="border-b border-border py-4 text-lg font-medium text-fg/90 transition-colors hover:text-accent-soft"
+                  className={`border-b border-border py-4 text-lg font-medium transition-colors hover:text-accent-soft ${
+                    pathname === item.path ? "text-fg" : "text-muted"
+                  }`}
                 >
                   {item.label}
                 </motion.a>
               ))}
             </nav>
-            <a
-              href={APPLY_URL ?? "/apply"}
-              onClick={() => setMenuOpen(false)}
-              className="mt-8 w-full rounded-xl bg-accent px-4 py-4 text-center text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
-            >
-              지원하기
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

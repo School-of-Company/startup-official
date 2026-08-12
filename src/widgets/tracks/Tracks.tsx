@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
-import { TRACKS } from "@/entities/track";
+import { TRACKS, type Track } from "@/entities/track";
 
 const TRACK_ART: Partial<Record<string, JSX.Element>> = {
   frontend: (
@@ -8,7 +8,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 28 27"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-6 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
     >
       <rect
         width="15.3553"
@@ -16,7 +16,13 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
         transform="matrix(0.866025 0.5 -0.866025 0.5 14.1094 10.9009)"
         fill="currentColor"
       />
-      <circle cx="14.1095" cy="17.8722" r="3.15636" fill="currentColor" opacity="0.5" />
+      <circle
+        cx="14.1095"
+        cy="17.8722"
+        r="3.15636"
+        fill="currentColor"
+        opacity="0.5"
+      />
       <rect
         opacity="0.7"
         width="15.3553"
@@ -65,13 +71,19 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 36 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-6 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
     >
       <path
         d="M33.209 11.1738L29.5557 14.8262L29.5566 14.8271L18.3838 26L18.3828 25.999L18.3818 26L7.20898 14.8271V14.8262L3.55664 11.1738L14.7295 0L18.3828 3.65332L22.0361 0L33.209 11.1738Z"
         fill="currentColor"
       />
-      <circle cx="18.2162" cy="12.9721" r="3.77483" fill="currentColor" opacity="0.5" />
+      <circle
+        cx="18.2162"
+        cy="12.9721"
+        r="3.77483"
+        fill="currentColor"
+        opacity="0.5"
+      />
       <path
         opacity="0.45"
         d="M26.2997 3.97487C30.3021 2.92992 33.2646 3.01363 34.0304 4.46072C35.3682 6.98816 29.4971 12.7186 20.9165 17.2595C12.3358 21.8004 4.29456 23.4331 2.95667 20.9056C2.17859 19.4354 3.39908 17.1249 6.61273 14.3525L7.25721 14.997C6.08939 16.3726 5.54853 17.4976 5.96743 18.2894C7.00999 20.2582 13.2737 18.9864 19.9581 15.4488C26.6424 11.9112 31.2154 7.44774 30.1739 5.47878C29.7719 4.71977 28.5934 4.4423 26.914 4.59104L26.2997 3.97487Z"
@@ -89,7 +101,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 30 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-6 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
     >
       <path
         fillRule="evenodd"
@@ -109,7 +121,7 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
       aria-hidden
       viewBox="0 0 34 26"
       fill="none"
-      className="pointer-events-none absolute -bottom-6 -right-6 h-2/3 w-2/3 text-fg opacity-15"
+      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
     >
       <path
         opacity="0.45"
@@ -144,30 +156,123 @@ const TRACK_ART: Partial<Record<string, JSX.Element>> = {
         fill="currentColor"
       />
       <defs>
-        <linearGradient id="ai-dot-1" x1="17.1527" y1="10.3235" x2="17.1527" y2="9.23682" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="ai-dot-1"
+          x1="17.1527"
+          y1="10.3235"
+          x2="17.1527"
+          y2="9.23682"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="currentColor" />
           <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="ai-dot-2" x1="17.152" y1="16.481" x2="17.152" y2="15.3943" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="ai-dot-2"
+          x1="17.152"
+          y1="16.481"
+          x2="17.152"
+          y2="15.3943"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="currentColor" />
           <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="ai-dot-3" x1="17.1541" y1="8.14954" x2="17.1541" y2="6.70068" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="ai-dot-3"
+          x1="17.1541"
+          y1="8.14954"
+          x2="17.1541"
+          y2="6.70068"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="currentColor" />
           <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
-        <linearGradient id="ai-dot-4" x1="17.1506" y1="19.0161" x2="17.1506" y2="17.5673" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="ai-dot-4"
+          x1="17.1506"
+          y1="19.0161"
+          x2="17.1506"
+          y2="17.5673"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop stopColor="currentColor" />
           <stop offset="1" stopColor="currentColor" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
   ),
+  design: (
+    <svg
+      aria-hidden
+      viewBox="0 0 32 26"
+      fill="none"
+      className="pointer-events-none absolute -bottom-6 -right-14 h-2/3 w-2/3 text-fg opacity-15"
+    >
+      <path
+        d="M15.5 24C21.8513 24 27 18.8513 27 12.5C27 6.14873 21.8513 1 15.5 1C9.14873 1 4 6.14873 4 12.5C4 18.8513 9.14873 24 15.5 24Z"
+        fill="currentColor"
+      />
+      <path
+        opacity="0.45"
+        d="M23.1936 4.67303C27.1383 3.67382 30.0581 3.75386 30.8128 5.13762C32.1313 7.55442 26.3449 13.034 17.8879 17.3762C9.43106 21.7183 1.50584 23.2795 0.187257 20.8627C-0.579606 19.4568 1.05644 17.0158 4.22372 14.3648L4.37391 15.1468C3.22295 16.4621 2.74172 17.6038 3.15458 18.361C4.18211 20.2435 10.3555 19.0275 16.9434 15.6447C23.5314 12.262 28.0382 7.99388 27.0118 6.1111C26.6156 5.38533 25.4542 5.12001 23.799 5.26222L23.1936 4.67303Z"
+        fill="currentColor"
+      />
+      <path
+        opacity="0.45"
+        d="M7.80638 4.67303C3.8617 3.67382 0.941949 3.75386 0.187227 5.13762C-1.13132 7.55442 4.65513 13.034 13.1121 17.3762C21.5689 21.7183 29.4942 23.2795 30.8127 20.8627C31.5796 19.4568 29.9436 17.0158 26.7763 14.3648L26.6261 15.1468C27.7771 16.4621 28.2583 17.6038 27.8454 18.361C26.8179 20.2435 20.6445 19.0275 14.0566 15.6447C7.46858 12.262 2.96178 7.99388 3.98822 6.1111C4.38436 5.38533 5.54581 5.12001 7.20102 5.26222L7.80638 4.67303Z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
 };
+
+function TrackCard({
+  track,
+  delay,
+  widthClassName,
+}: {
+  track: Track;
+  delay: number;
+  widthClassName: string;
+}) {
+  return (
+    <Reveal delay={delay} className={widthClassName}>
+      <div className="group relative flex h-full flex-col overflow-hidden rounded-card bg-surface p-8 transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 -right-14 h-20 w-20 rounded-full bg-accent/60 blur-2xl"
+        />
+        {TRACK_ART[track.key]}
+        <div className="relative z-10 mb-8">
+          <h3 className="text-xl font-semibold">{track.name}</h3>
+          <p className="mt-1 text-sm text-accent-soft">{track.enName}</p>
+        </div>
+        <p className="relative z-10 mb-8 flex-1 text-sm leading-relaxed text-muted">
+          {track.description}
+        </p>
+        <div className="relative z-10 flex flex-wrap gap-2">
+          {track.stack.map((s) => (
+            <span
+              key={s}
+              className="rounded-full bg-surface2 px-3 py-1 text-xs text-muted"
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+      </div>
+    </Reveal>
+  );
+}
 
 export default function Tracks() {
   return (
-    <section id="tracks" className="relative scroll-mt-16 overflow-hidden py-24 sm:py-32">
+    <section
+      id="tracks"
+      className="relative scroll-mt-16 overflow-hidden py-24 sm:py-32"
+    >
       <SectionGlow className="-right-40 top-10 h-[420px] w-[420px]" />
 
       <div className="relative mx-auto max-w-wide px-6 sm:px-8 lg:px-10">
@@ -177,34 +282,14 @@ export default function Tracks() {
           description="스타트업과 함께할 10기 팀원을 아래와 같이 모집합니다."
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-wrap justify-start gap-8">
           {TRACKS.map((track, i) => (
-            <Reveal key={track.key} delay={i * 0.08}>
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-card bg-surface p-8 transition-[transform,translate,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -bottom-6 -right-6 h-20 w-20 rounded-full bg-accent/60 blur-2xl"
-                />
-                {TRACK_ART[track.key]}
-                <div className="relative z-10 mb-8">
-                  <h3 className="text-xl font-semibold">{track.name}</h3>
-                  <p className="mt-1 text-sm text-accent-soft">{track.enName}</p>
-                </div>
-                <p className="relative z-10 mb-8 flex-1 text-sm leading-relaxed text-muted">
-                  {track.description}
-                </p>
-                <div className="relative z-10 flex flex-wrap gap-2">
-                  {track.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-full bg-surface2 px-3 py-1 text-xs text-muted"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
+            <TrackCard
+              key={track.key}
+              track={track}
+              delay={i * 0.08}
+              widthClassName="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.334rem)]"
+            />
           ))}
         </div>
       </div>

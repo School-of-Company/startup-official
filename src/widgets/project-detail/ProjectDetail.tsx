@@ -8,7 +8,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
     <section className="relative overflow-hidden py-24 sm:py-32">
       <div className="mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Link
-          href="/careers#projects"
+          href="/#projects"
           className="text-sm text-muted transition-colors hover:text-fg"
         >
           ← 프로젝트 목록으로

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { APPLY_URL } from "@/shared/config";
 import { Parallax } from "@/shared/ui";
 import { useReducedMotionSafe } from "@/shared/lib";
 
@@ -84,10 +83,10 @@ export default function Hero() {
           className="mt-8 flex flex-col items-center gap-4 sm:flex-row"
         >
           <a
-            href={APPLY_URL ?? "/apply"}
+            href="/recruit"
             className="w-full rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98] sm:w-auto"
           >
-            지원하기
+            모집 안내 보기
           </a>
           <a
             href="#projects"

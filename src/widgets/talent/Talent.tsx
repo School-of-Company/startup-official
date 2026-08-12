@@ -28,7 +28,7 @@ const TRAITS = [
   },
   {
     title: "성장을 향한 갈망",
-    description: "전공 실력을 향상시키고 개발자가 되는 것이 꿈인 사람",
+    description: "전공 실력을 향상시키고 개발자로서 성장하고 싶은 사람",
     glow: "100%",
     icon: (
       <svg width="88" height="88" viewBox="0 0 174 174" fill="none">

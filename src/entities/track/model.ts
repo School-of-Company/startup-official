@@ -24,6 +24,14 @@ export const TRACKS: Track[] = [
     stack: ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "Redis"],
   },
   {
+    key: "devops",
+    name: "DevOps",
+    enName: "Infrastructure",
+    description:
+      "서비스가 끊김 없이 배포되고 운영되도록 인프라를 구축합니다. CI/CD와 모니터링으로 개발 생산성과 안정성을 높입니다.",
+    stack: ["Docker", "AWS", "GitHub Actions", "Kubernetes", "Terraform"],
+  },
+  {
     key: "ai",
     name: "AI",
     enName: "Artificial Intelligence",
@@ -32,11 +40,11 @@ export const TRACKS: Track[] = [
     stack: ["Python", "PyTorch", "LangChain", "OpenAI API", "FastAPI"],
   },
   {
-    key: "devops",
-    name: "DevOps",
-    enName: "Infrastructure",
+    key: "design",
+    name: "Design",
+    enName: "UI/UX",
     description:
-      "서비스가 끊김 없이 배포되고 운영되도록 인프라를 구축합니다. CI/CD와 모니터링으로 개발 생산성과 안정성을 높입니다.",
-    stack: ["Docker", "AWS", "GitHub Actions", "Kubernetes", "Terraform"],
+      "제품의 사용자 경험과 인터페이스를 디자인합니다. 사용자 리서치와 프로토타이핑으로 서비스의 첫인상과 사용성을 만들어갑니다.",
+    stack: ["Figma", "Design System", "Prototyping", "User Research", "Motion"],
   },
 ];
