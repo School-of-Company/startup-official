@@ -38,14 +38,15 @@ const STEPS = [
   {
     index: "03",
     title: "면접",
-    body: "서류에 담긴 이야기를 직접 나누는 자리입니다. 면접 일정과 방식은 서류 결과 발표 시 함께 안내됩니다.",
+    body: "면접 일정과 방식은 서류 결과 발표 시 함께 안내됩니다.",
     timing: "서류 결과 발표 후 순차 진행",
   },
   {
     index: "04",
-    title: "최종 발표",
-    body: "면접까지 마친 지원자에게 최종 결과를 안내합니다.",
-    timing: "면접 종료 후 빠르게 안내",
+    title: "면접 결과 발표",
+    body: "면접까지 마친 지원자에게 면접 결과를 안내합니다.",
+    timing: "면접 종료 후 안내",
+    note: "면접 결과 발표 후 일정은 합격자들에 한해 추후 공지하도록 하겠습니다.",
   },
 ];
 
@@ -118,6 +119,9 @@ export default function Process() {
                       : formatDeadlineKorean(APPLICATION_DEADLINE)
                     : step.timing}
                 </p>
+                {step.note && (
+                  <p className="relative mt-1 text-xs text-muted/70">{step.note}</p>
+                )}
               </div>
             </Reveal>
           ))}

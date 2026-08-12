@@ -3,9 +3,23 @@
 import { motion } from "framer-motion";
 import { Countdown } from "@/widgets/countdown";
 import { DURATION, EASE_OUT, STAGGER_CHILD, useReducedMotionSafe } from "@/shared/lib";
+import { FrontendIcon, BackendIcon } from "@/entities/track";
 
 export default function Hero() {
   const reduceMotion = useReducedMotionSafe();
+
+  const float = (rotate: number, delay: number) => ({
+    style: { rotate },
+    animate: reduceMotion ? undefined : { y: [0, -18, 0] },
+    transition: reduceMotion
+      ? undefined
+      : {
+          duration: 5,
+          delay,
+          repeat: Infinity,
+          ease: "easeInOut" as const,
+        },
+  });
 
   const fadeUp = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
@@ -44,7 +58,20 @@ export default function Hero() {
         }}
       />
 
-      <div className="mx-auto flex max-w-wide flex-col items-center px-6 text-center sm:px-8">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden items-center justify-between px-4 lg:flex xl:px-10"
+      >
+        <motion.div className="text-fg opacity-[0.16]" {...float(10, 0)}>
+          <FrontendIcon className="h-40 w-40 xl:h-56 xl:w-56" />
+        </motion.div>
+
+        <motion.div className="text-fg opacity-[0.16]" {...float(-10, 0.6)}>
+          <BackendIcon className="h-40 w-40 xl:h-56 xl:w-56" />
+        </motion.div>
+      </div>
+
+      <div className="relative z-10 mx-auto flex max-w-wide flex-col items-center px-6 text-center sm:px-8">
         <motion.div
           variants={fadeUp}
           initial="hidden"

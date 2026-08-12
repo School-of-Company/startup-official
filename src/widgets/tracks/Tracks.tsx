@@ -1,101 +1,13 @@
 import type { JSX } from "react";
 import { Reveal, SectionGlow, SectionHeading } from "@/shared/ui";
-import { TRACKS, type Track } from "@/entities/track";
+import { TRACKS, type Track, FrontendIcon, BackendIcon } from "@/entities/track";
+
+const TRACK_ICON_CLASS =
+  "pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125";
 
 const TRACK_ART: Partial<Record<string, JSX.Element>> = {
-  frontend: (
-    <svg
-      aria-hidden
-      viewBox="0 0 28 27"
-      fill="none"
-      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
-    >
-      <rect
-        width="15.3553"
-        height="15.3553"
-        transform="matrix(0.866025 0.5 -0.866025 0.5 14.1094 10.9009)"
-        fill="currentColor"
-      />
-      <circle
-        cx="14.1095"
-        cy="17.8722"
-        r="3.15636"
-        fill="currentColor"
-        opacity="0.5"
-      />
-      <rect
-        opacity="0.7"
-        width="15.3553"
-        height="15.3553"
-        transform="matrix(0.866025 0.5 -0.866025 0.5 14.1094 7.00732)"
-        fill="currentColor"
-      />
-      <rect
-        opacity="0.5"
-        width="15.3553"
-        height="15.3553"
-        transform="matrix(0.866025 0.5 -0.866025 0.5 14.1094 3.11377)"
-        fill="currentColor"
-      />
-      <path
-        d="M14.2903 0.0748957C14.1904 -0.0250478 14.0284 -0.0250478 13.9284 0.0748957L12.2997 1.70357C12.1998 1.80351 12.1998 1.96555 12.2997 2.0655C12.3997 2.16544 12.5617 2.16544 12.6617 2.0655L14.1094 0.617787L15.5571 2.0655C15.657 2.16544 15.8191 2.16544 15.919 2.0655C16.019 1.96555 16.019 1.80351 15.919 1.70357L14.2903 0.0748957ZM14.1094 14.5875L14.3653 14.5875L14.3653 0.255859L14.1094 0.255859L13.8535 0.255859L13.8535 14.5875L14.1094 14.5875Z"
-        fill="url(#paint0_linear_3227_926)"
-      />
-      <path
-        opacity="0.45"
-        d="M10.146 9.00073C9.04676 9.75261 8.47189 10.5165 8.72034 11.0588C9.15418 12.0061 11.9358 11.9187 14.9333 10.8634C17.9307 9.80805 20.0091 8.18456 19.5753 7.23727C19.3229 6.68627 18.4384 6.48101 17.0172 6.61697L17.0526 6.85744C17.6715 6.89708 18.1027 7.06337 18.2386 7.36008C18.5765 8.09809 16.9575 9.36269 14.6224 10.1847C12.2873 11.0068 10.1207 11.0748 9.78261 10.3371C9.65238 10.0525 9.81305 9.68957 10.1936 9.30399L10.146 9.00073Z"
-        fill="currentColor"
-      />
-      <path
-        opacity="0.45"
-        d="M18.1528 9.00073C19.2521 9.75261 19.8269 10.5165 19.5785 11.0588C19.1447 12.0061 16.363 11.9187 13.3656 10.8634C10.3681 9.80805 8.28969 8.18456 8.72353 7.23727C8.97594 6.68627 9.86048 6.48101 11.2816 6.61697L11.2463 6.85744C10.6273 6.89708 10.1962 7.06337 10.0602 7.36008C9.72231 8.09809 11.3413 9.36269 13.6764 10.1847C16.0115 11.0068 18.1781 11.0748 18.5162 10.337C18.6465 10.0525 18.4858 9.68957 18.1052 9.30399L18.1528 9.00073Z"
-        fill="currentColor"
-      />
-      <defs>
-        <linearGradient
-          id="paint0_linear_3227_926"
-          x1="14.6094"
-          y1="11.0435"
-          x2="14.6094"
-          y2="14.5875"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="currentColor" />
-          <stop offset="1" stopColor="currentColor" stopOpacity="0" />
-        </linearGradient>
-      </defs>
-    </svg>
-  ),
-  backend: (
-    <svg
-      aria-hidden
-      viewBox="0 0 36 26"
-      fill="none"
-      className="pointer-events-none absolute -bottom-2 -right-10 h-1/2 w-1/2 text-fg opacity-15 transition-transform duration-300 group-hover:-translate-x-4 group-hover:-translate-y-4 group-hover:scale-125"
-    >
-      <path
-        d="M33.209 11.1738L29.5557 14.8262L29.5566 14.8271L18.3838 26L18.3828 25.999L18.3818 26L7.20898 14.8271V14.8262L3.55664 11.1738L14.7295 0L18.3828 3.65332L22.0361 0L33.209 11.1738Z"
-        fill="currentColor"
-      />
-      <circle
-        cx="18.2162"
-        cy="12.9721"
-        r="3.77483"
-        fill="currentColor"
-        opacity="0.5"
-      />
-      <path
-        opacity="0.45"
-        d="M26.2997 3.97487C30.3021 2.92992 33.2646 3.01363 34.0304 4.46072C35.3682 6.98816 29.4971 12.7186 20.9165 17.2595C12.3358 21.8004 4.29456 23.4331 2.95667 20.9056C2.17859 19.4354 3.39908 17.1249 6.61273 14.3525L7.25721 14.997C6.08939 16.3726 5.54853 17.4976 5.96743 18.2894C7.00999 20.2582 13.2737 18.9864 19.9581 15.4488C26.6424 11.9112 31.2154 7.44774 30.1739 5.47878C29.7719 4.71977 28.5934 4.4423 26.914 4.59104L26.2997 3.97487Z"
-        fill="currentColor"
-      />
-      <path
-        opacity="0.45"
-        d="M10.5053 3.97545C6.5029 2.9305 3.54041 3.01421 2.77467 4.4613C1.43678 6.98874 7.30788 12.7191 15.8886 17.2601C24.4693 21.801 32.5105 23.4337 33.8484 20.9062C34.6264 19.436 33.306 17.2175 30.0924 14.4451L29.6004 14.9286C30.7682 16.3042 31.2565 17.4982 30.8376 18.29C29.795 20.2588 23.5313 18.987 16.8469 15.4494C10.1626 11.9118 5.58966 7.44832 6.63116 5.47936C7.03317 4.72035 8.21164 4.44288 9.89107 4.59162L10.5053 3.97545Z"
-        fill="currentColor"
-      />
-    </svg>
-  ),
+  frontend: <FrontendIcon className={TRACK_ICON_CLASS} />,
+  backend: <BackendIcon className={TRACK_ICON_CLASS} />,
   devops: (
     <svg
       aria-hidden
