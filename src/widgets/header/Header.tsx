@@ -57,7 +57,12 @@ export default function Header() {
       }`}
     >
       <div className="relative mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <Link href={HOME_PATH} onClick={scrollToTop} className="flex items-center" aria-label="홈으로 이동">
+        <Link
+          href={HOME_PATH}
+          onClick={scrollToTop}
+          className="flex items-center"
+          aria-label="홈으로 이동"
+        >
           <Logo className="h-5 w-auto text-fg sm:h-6" />
         </Link>
 
@@ -89,7 +94,7 @@ export default function Header() {
             <span className="relative block h-4 w-5">
               <span
                 className={`absolute left-0 top-0 h-[1.5px] w-5 bg-fg transition-transform ${
-                  menuOpen ? "translate-y-[7px] rotate-45" : ""
+                  menuOpen ? "translate-y-1.75 rotate-45" : ""
                 }`}
               />
               <span

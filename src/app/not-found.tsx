@@ -13,7 +13,7 @@ export default function NotFound() {
       <Header />
       <main className="flex-1">
         <section className="relative flex min-h-[70vh] items-center overflow-hidden py-24">
-          <SectionGlow className="-left-40 -top-40 h-[420px] w-[420px]" />
+          <SectionGlow className="-left-40 -top-40 h-105 w-105" />
 
           <div className="relative mx-auto max-w-content px-6 text-center sm:px-8 lg:px-10">
             <Logo className="mx-auto h-8 w-auto text-fg sm:h-9" />
