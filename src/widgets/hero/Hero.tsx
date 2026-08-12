@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Countdown } from "@/widgets/countdown";
-import { Parallax } from "@/shared/ui";
 import { DURATION, EASE_OUT, STAGGER_CHILD, useReducedMotionSafe } from "@/shared/lib";
 
 export default function Hero() {
@@ -32,9 +31,6 @@ export default function Hero() {
       id="top"
       className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32"
     >
-      <Parallax speed={0.4} className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-hero-fade" />
-      </Parallax>
       <div
         className="absolute inset-0 -z-10 opacity-[0.35]"
         style={{
@@ -54,7 +50,7 @@ export default function Hero() {
           initial="hidden"
           animate="show"
           custom={0}
-          className="mb-6 inline-flex items-center gap-2 rounded-full bg-surface px-4 py-2 text-xs font-medium text-muted"
+          className="frost mb-6 inline-flex items-center gap-2 rounded-full bg-surface/60 px-4 py-2 text-xs font-medium text-muted backdrop-blur-md"
         >
           <span
             className={`h-2 w-2 rounded-full bg-accent-soft ${reduceMotion ? "" : "animate-pulse"}`}

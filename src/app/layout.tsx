@@ -1,19 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { pretendard } from "./fonts";
 import { BRAND } from "@/shared/config";
 import { THEME_SCRIPT } from "@/features/theme-toggle";
-
-const FONT_SCRIPT = `
-(function () {
-  function reveal() { document.documentElement.classList.add("fonts-loaded"); }
-  if (!document.fonts) { reveal(); return; }
-  var fallback = setTimeout(reveal, 3000);
-  document.fonts.ready.then(function () {
-    clearTimeout(fallback);
-    reveal();
-  }, reveal);
-})();
-`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.schoolofcompany.com"),
@@ -36,10 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning className={pretendard.variable}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-        <script dangerouslySetInnerHTML={{ __html: FONT_SCRIPT }} />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
         {children}

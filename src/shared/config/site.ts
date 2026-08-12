@@ -9,3 +9,10 @@ export const APPLY_URL = process.env.NEXT_PUBLIC_APPLY_URL ?? "";
 // 모집 마감(KST). 실시간 카운트다운의 기준 시각입니다. .env의 NEXT_PUBLIC_APPLICATION_DEADLINE으로 관리합니다.
 export const APPLICATION_DEADLINE =
   process.env.NEXT_PUBLIC_APPLICATION_DEADLINE ?? "2026-08-31T23:59:00+09:00";
+
+// 모집 일정(Process) 진행 단계. 0=서류 접수(마감 여부로 자동 판단), 1=서류 발표까지,
+// 2=면접까지, 3=전체 완료. .env의 NEXT_PUBLIC_PROCESS_STAGE로 관리합니다.
+const rawProcessStage = Number(process.env.NEXT_PUBLIC_PROCESS_STAGE ?? 0);
+export const PROCESS_STAGE = Number.isFinite(rawProcessStage)
+  ? Math.min(3, Math.max(0, Math.trunc(rawProcessStage)))
+  : 0;

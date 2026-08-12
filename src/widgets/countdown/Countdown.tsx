@@ -67,14 +67,21 @@ export default function Countdown() {
 
   if (timeLeft.isOver) {
     return (
-      <motion.p
-        initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduceMotion ? 0.15 : 0.5 }}
-        className="text-sm font-semibold text-accent-soft"
+      <motion.div
+        initial={{ opacity: 0, y: reduceMotion ? 0 : 16, scale: reduceMotion ? 1 : 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: reduceMotion ? 0.15 : 0.5, ease: EASE_OUT }}
+        className="flex flex-col items-center gap-3 rounded-card bg-surface px-10 py-8 sm:px-14 sm:py-9"
       >
-        모집이 마감되었습니다
-      </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: reduceMotion ? 0.15 : 0.4, delay: STAGGER_CHILD, ease: EASE_OUT }}
+          className="text-[17px] font-semibold text-muted"
+        >
+          모집이 마감되었습니다.
+        </motion.p>
+      </motion.div>
     );
   }
 
@@ -91,7 +98,7 @@ export default function Countdown() {
         initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduceMotion ? 0.15 : 0.5 }}
-        className="text-sm font-semibold tracking-wide text-muted"
+        className="text-lg font-semibold tracking-wide text-muted sm:text-xl"
       >
         모집 마감까지
       </motion.p>

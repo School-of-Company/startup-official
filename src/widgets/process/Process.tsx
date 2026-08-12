@@ -1,7 +1,7 @@
 "use client";
 
 import { cubicBezier, motion } from "framer-motion";
-import { APPLICATION_DEADLINE } from "@/shared/config";
+import { APPLICATION_DEADLINE, PROCESS_STAGE } from "@/shared/config";
 import { EASE_IN_OUT, STAGGER_CHILD, useCountdown, useReducedMotionSafe } from "@/shared/lib";
 import { Reveal, SectionHeading } from "@/shared/ui";
 
@@ -53,6 +53,7 @@ export default function Process() {
   const { isOver } = useCountdown(APPLICATION_DEADLINE);
   const reduceMotion = useReducedMotionSafe();
   const easeInOut = cubicBezier(...EASE_IN_OUT);
+  const filledCount = PROCESS_STAGE > 0 ? PROCESS_STAGE + 1 : isOver ? 1 : 0;
 
   return (
     <section
