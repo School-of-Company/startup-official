@@ -15,6 +15,7 @@ export default function StickyApplyBar() {
   const anchorRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const [docked, setDocked] = useState(false);
+  const [barHeight, setBarHeight] = useState(0);
   const reduceMotion = useReducedMotionSafe();
   const timeLeft = useCountdown(APPLICATION_DEADLINE);
 
@@ -28,11 +29,13 @@ export default function StickyApplyBar() {
     if (!anchor || !bar) return;
 
     function measure() {
+      const height = bar!.offsetHeight;
       measurements.current = {
         anchorDocTop: anchor!.getBoundingClientRect().top + window.scrollY,
-        barHeight: bar!.offsetHeight,
+        barHeight: height,
         gap: window.innerWidth < 640 ? 16 : 24,
       };
+      setBarHeight(height);
       updateDocked(window.scrollY);
     }
 
@@ -70,6 +73,7 @@ export default function StickyApplyBar() {
       ref={anchorRef}
       className="relative mx-auto flex max-w-wide justify-center px-6 pt-6 pb-12 sm:px-8 sm:pt-8 sm:pb-16 lg:px-10"
     >
+      {!docked && <div aria-hidden style={{ height: barHeight }} />}
       <motion.div
         ref={barRef}
         layout

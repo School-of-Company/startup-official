@@ -25,6 +25,11 @@ layer(base);
     rgba(255, 59, 92, 0.38) 0%,
     rgba(255, 59, 92, 0) 70%
   );
+  --background-image-hero-fade: linear-gradient(
+    to bottom,
+    rgba(255, 59, 92, 0.45) 0%,
+    rgb(var(--bg)) 100%
+  );
   --background-image-cta-gradient: linear-gradient(
     135deg,
     #ff3b5c 0%,

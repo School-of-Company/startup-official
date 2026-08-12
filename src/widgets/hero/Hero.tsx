@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Countdown } from "@/widgets/countdown";
 import { Parallax } from "@/shared/ui";
 import { DURATION, EASE_OUT, STAGGER_CHILD, useReducedMotionSafe } from "@/shared/lib";
 
@@ -32,7 +33,7 @@ export default function Hero() {
       className="relative overflow-hidden pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32"
     >
       <Parallax speed={0.4} className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-hero-glow" />
+        <div className="absolute inset-0 bg-hero-fade" />
       </Parallax>
       <div
         className="absolute inset-0 -z-10 opacity-[0.35]"
@@ -73,6 +74,10 @@ export default function Hero() {
             </motion.span>
           </span>
         </h1>
+
+        <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3} className="mt-10">
+          <Countdown />
+        </motion.div>
       </div>
     </section>
   );

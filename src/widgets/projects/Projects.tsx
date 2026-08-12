@@ -33,12 +33,7 @@ export default function Projects() {
                   </div>
 
                   <div className="p-5">
-                    <div className="mb-3 flex items-start justify-between gap-4">
-                      <h3 className="text-lg font-semibold">{project.name}</h3>
-                      <span className="mt-1 inline-block text-muted transition-[color,translate] duration-200 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg">
-                        ↗
-                      </span>
-                    </div>
+                    <h3 className="mb-3 text-lg font-semibold">{project.name}</h3>
                     {project.stack.length > 0 && (
                       <div className="mb-3 flex flex-wrap gap-1.5">
                         {project.stack.map((s) => (

@@ -66,27 +66,28 @@ export default function Process() {
           description="지원부터 합류까지, 스타트업과 함께하는 여정입니다."
         />
 
-        <div className="mb-6 hidden items-center lg:flex">
-          {STEPS.flatMap((step, i) => [
-            <span
-              key={`dot-${step.index}`}
-              className={`h-3 w-3 shrink-0 rounded-full ${
-                i === 0 && isOver ? "bg-accent" : "bg-surface2 ring-1 ring-border"
-              }`}
-            />,
-            i < STEPS.length - 1 ? (
-              <div key={`line-${step.index}`} className="relative mx-2 h-px flex-1 bg-border">
-                {i === 0 && (
-                  <motion.div
-                    className="absolute inset-y-0 left-0 w-full origin-left bg-accent"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: isOver ? 1 : 0 }}
-                    transition={{ duration: reduceMotion ? 0.15 : 1.1, ease: easeInOut }}
-                  />
-                )}
-              </div>
-            ) : null,
-          ])}
+        <div className="mb-6 hidden lg:grid lg:grid-cols-4 lg:items-center lg:gap-6">
+          {STEPS.map((step, i) => (
+            <div key={step.index} className="relative flex items-center justify-center">
+              <span
+                className={`relative z-10 h-3 w-3 shrink-0 rounded-full ${
+                  i === 0 && isOver ? "bg-accent" : "bg-surface2 ring-1 ring-border"
+                }`}
+              />
+              {i < STEPS.length - 1 && (
+                <div className="absolute left-1/2 top-1/2 h-px w-[calc(100%+1.5rem)] -translate-y-1/2 bg-border">
+                  {i === 0 && (
+                    <motion.div
+                      className="absolute inset-y-0 left-0 w-full origin-left bg-accent"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: isOver ? 1 : 0 }}
+                      transition={{ duration: reduceMotion ? 0.15 : 1.1, ease: easeInOut }}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

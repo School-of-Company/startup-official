@@ -53,12 +53,12 @@ export default function Slogan() {
         <h1 className="max-w-4xl text-balance text-[2.5rem] font-bold leading-[1.15] tracking-tight sm:text-6xl sm:leading-[1.1] lg:text-[4.25rem] lg:tracking-[-0.03em]">
           <span className="block overflow-hidden">
             <motion.span className="block" {...lineReveal(0.1)}>
-              <span className="text-gradient">스타트업</span>은 교실 밖에서
+              학생이라는 이름 위에
             </motion.span>
           </span>
           <span className="block overflow-hidden">
             <motion.span className="block" {...lineReveal(0.18)}>
-              진짜 서비스를 만듭니다.
+              실력으로 증명합니다.
             </motion.span>
           </span>
         </h1>

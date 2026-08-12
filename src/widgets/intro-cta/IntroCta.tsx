@@ -1,21 +1,37 @@
-import { BRAND, GENERATION } from "@/shared/config";
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { BRAND } from "@/shared/config";
 import { Reveal } from "@/shared/ui";
+import { useReducedMotionSafe } from "@/shared/lib";
 
 export default function IntroCta() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotionSafe();
+
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "center center"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1.3]);
+
   return (
     <section className="relative overflow-hidden py-8 sm:py-12">
       <div className="relative mx-auto max-w-wide px-6 sm:px-8 lg:px-10">
         <Reveal>
-          <div className="relative overflow-hidden rounded-panel bg-cta-gradient px-8 py-16 text-center text-white sm:px-16 sm:py-20">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/70">
-              {GENERATION} {BRAND}
-            </p>
-            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight sm:text-4xl">
-              지금, {BRAND}과 함께
-              <br className="hidden sm:block" /> 성장할 준비가 되셨나요?
+          <motion.div
+            ref={cardRef}
+            style={{ scale: reduceMotion ? 1 : scale }}
+            className="relative overflow-hidden rounded-panel bg-cta-gradient px-8 py-16 text-center text-white sm:px-16 sm:py-20"
+          >
+            <h2 className="text-balance text-3xl font-bold tracking-tight sm:text-4xl">
+              {BRAND}이 만드는 수많은
+              <br className="hidden sm:block" /> 도전의 순간들,
             </h2>
             <p className="mx-auto mt-4 max-w-md text-balance text-white/80 sm:text-lg">
-              모집 분야와 지원 절차를 확인하고 지금 지원해보세요.
+              당신과 함께 만들고 싶습니다.
+              <br className="hidden sm:block" /> 지금, {BRAND}에 합류하세요.
             </p>
             <a
               href="/recruit"
@@ -23,7 +39,7 @@ export default function IntroCta() {
             >
               모집 안내 보러가기
             </a>
-          </div>
+          </motion.div>
         </Reveal>
       </div>
     </section>
