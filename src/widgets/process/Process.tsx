@@ -46,7 +46,6 @@ const STEPS = [
     title: "면접 결과 발표",
     body: "면접까지 마친 지원자에게 면접 결과를 안내합니다.",
     timing: "면접 종료 후 안내",
-    note: "면접 결과 발표 후 일정은 합격자들에 한해 추후 공지하도록 하겠습니다.",
   },
 ];
 
@@ -119,9 +118,6 @@ export default function Process() {
                       : formatDeadlineKorean(APPLICATION_DEADLINE)
                     : step.timing}
                 </p>
-                {step.note && (
-                  <p className="relative mt-1 text-xs text-muted/70">{step.note}</p>
-                )}
               </div>
             </Reveal>
           ))}

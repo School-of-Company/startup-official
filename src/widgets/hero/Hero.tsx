@@ -40,6 +40,13 @@ export default function Hero() {
       : { duration: 0.8, delay, ease: EASE_OUT },
   });
 
+  const floatText = (delay: number) => ({
+    animate: reduceMotion ? undefined : { y: [0, -6, 0] },
+    transition: reduceMotion
+      ? undefined
+      : { duration: 4, delay, repeat: Infinity, ease: "easeInOut" as const },
+  });
+
   return (
     <section
       id="top"
@@ -72,31 +79,29 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-wide flex-col items-center px-6 text-center sm:px-8">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={0}
-          className="frost mb-6 inline-flex items-center gap-2 rounded-full bg-surface/60 px-4 py-2 text-xs font-medium text-muted backdrop-blur-md"
-        >
-          <span
-            className={`h-2 w-2 rounded-full bg-accent-soft ${reduceMotion ? "" : "animate-pulse"}`}
-          />
-          5세대 스타트업 팀원 공개 채용
-        </motion.div>
+        <motion.div {...floatText(0.98)}>
+          <motion.div variants={fadeUp} initial="hidden" animate="show" custom={0} className="mb-6">
+            <div className="frost inline-flex items-center gap-2 rounded-full bg-surface/60 px-4 py-2 text-xs font-medium text-muted backdrop-blur-md">
+              <span
+                className={`h-2 w-2 rounded-full bg-accent-soft ${reduceMotion ? "" : "animate-pulse"}`}
+              />
+              5세대 스타트업 팀원 공개 채용
+            </div>
+          </motion.div>
 
-        <h1 className="max-w-5xl text-balance text-[2.5rem] font-bold leading-[1.15] tracking-tight sm:text-6xl sm:leading-[1.1] lg:text-[4.25rem] lg:tracking-[-0.03em]">
-          <span className="block overflow-hidden">
-            <motion.span className="block" {...lineReveal(0.1)}>
-              <span className="text-gradient">스타트업</span>과 함께 할
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden">
-            <motion.span className="block" {...lineReveal(0.18)}>
-              10기 팀원을 모집합니다.
-            </motion.span>
-          </span>
-        </h1>
+          <h1 className="max-w-5xl text-balance text-[2.5rem] font-bold leading-[1.15] tracking-tight sm:text-6xl sm:leading-[1.1] lg:text-[4.25rem] lg:tracking-[-0.03em]">
+            <span className="block overflow-hidden">
+              <motion.span className="block" {...lineReveal(0.1)}>
+                <span className="text-gradient">스타트업</span>과 함께 할
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span className="block" {...lineReveal(0.18)}>
+                10기 팀원을 모집합니다.
+              </motion.span>
+            </span>
+          </h1>
+        </motion.div>
 
         <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3} className="mt-10">
           <Countdown />

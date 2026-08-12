@@ -10,10 +10,10 @@ export const TRACKS: Track[] = [
   {
     key: "frontend",
     name: "Frontend",
-    enName: "Web",
+    enName: "Web & App",
     description:
-      "실제 사용자가 쓰는 서비스의 화면을 만듭니다. Next.js와 TypeScript로 수천 명이 접속하는 프로덕트를 설계하고 구현합니다.",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "TanStack Query"],
+      "실제 사용자가 쓰는 서비스의 화면을 만듭니다. Next.js와 TypeScript로 수천 명이 접속하는 프로덕트를 설계하고 구현하며, React Native(Expo)로 iOS·Android 앱까지 함께 만듭니다.",
+    stack: ["Next.js", "React", "React Native", "Expo", "TypeScript", "Tailwind CSS", "TanStack Query"],
   },
   {
     key: "backend",

@@ -7,10 +7,14 @@ import { BRAND } from "@/shared/config";
 import { Reveal } from "@/shared/ui";
 import { useReducedMotionSafe } from "@/shared/lib";
 
+// How far past the viewport edges the card bleeds at full scale, so it
+// overflows the screen instead of stopping flush with it.
+const OVERFLOW_SCALE = 1.15;
+
 export default function IntroCta() {
   const cardRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotionSafe();
-  const [maxScale, setMaxScale] = useState(1.3);
+  const [maxScale, setMaxScale] = useState(1.3 * OVERFLOW_SCALE);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -19,7 +23,7 @@ export default function IntroCta() {
     const updateMaxScale = () => {
       const width = card.offsetWidth;
       if (width > 0) {
-        setMaxScale(document.documentElement.clientWidth / width);
+        setMaxScale((document.documentElement.clientWidth / width) * OVERFLOW_SCALE);
       }
     };
 
@@ -60,7 +64,7 @@ export default function IntroCta() {
               </p>
               <Link
                 href="/recruit"
-                className="mt-8 inline-flex rounded-full bg-white px-8 py-4 text-sm font-semibold text-accent transition-[scale] duration-200 ease-out hover:scale-[1.02] active:scale-[0.97]"
+                className="mt-8 inline-flex rounded-full bg-white px-8 py-4 text-sm font-semibold text-accent transition-[scale] duration-200 ease-out active:scale-[0.97]"
               >
                 모집 안내 보러가기
               </Link>
