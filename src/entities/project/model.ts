@@ -106,3 +106,7 @@ export const PROJECTS: Project[] = [
     ],
   },
 ];
+
+export function getProjectBySlug(slug: string): Project | undefined {
+  return PROJECTS.find((project) => project.slug === slug);
+}

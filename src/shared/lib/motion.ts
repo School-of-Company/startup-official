@@ -3,6 +3,9 @@
 export const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 export const EASE_IN_OUT = [0.77, 0, 0.175, 1] as const;
 
+// Snappy overshoot-free ease-out used for menu/panel pop-in transitions.
+export const EASE_POP = [0.16, 1, 0.3, 1] as const;
+
 export const REDUCED_TRANSITION = { duration: 0.25, ease: "linear" as const };
 
 export const DURATION = {

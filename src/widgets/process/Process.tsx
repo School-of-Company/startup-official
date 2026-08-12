@@ -2,7 +2,7 @@
 
 import { cubicBezier, motion } from "framer-motion";
 import { APPLICATION_DEADLINE, PROCESS_STAGE } from "@/shared/config";
-import { EASE_IN_OUT, STAGGER_CHILD, useCountdown, useReducedMotionSafe } from "@/shared/lib";
+import { EASE_IN_OUT, STAGGER_CHILD, useDeadlinePassed, useReducedMotionSafe } from "@/shared/lib";
 import { Reveal, SectionHeading } from "@/shared/ui";
 
 function formatDeadlineKorean(iso: string) {
@@ -22,6 +22,10 @@ function formatDeadlineKorean(iso: string) {
 
   return `${get("year")}년 ${get("month")}월 ${get("day")}일(${get("weekday")}) ${get("dayPeriod")} ${get("hour")}시 ${get("minute")}분 ${get("second")}초`;
 }
+
+// APPLICATION_DEADLINE never changes at runtime, so this is computed once at
+// module scope instead of on every render.
+const DEADLINE_LABEL = formatDeadlineKorean(APPLICATION_DEADLINE);
 
 const STEPS = [
   {
@@ -50,7 +54,7 @@ const STEPS = [
 ];
 
 export default function Process() {
-  const { isOver } = useCountdown(APPLICATION_DEADLINE);
+  const isOver = useDeadlinePassed(APPLICATION_DEADLINE);
   const reduceMotion = useReducedMotionSafe();
   const easeInOut = cubicBezier(...EASE_IN_OUT);
   const filledCount = PROCESS_STAGE > 0 ? PROCESS_STAGE + 1 : isOver ? 1 : 0;
@@ -115,7 +119,7 @@ export default function Process() {
                   {i === 0
                     ? isOver
                       ? "모집이 마감되었습니다"
-                      : formatDeadlineKorean(APPLICATION_DEADLINE)
+                      : DEADLINE_LABEL
                     : step.timing}
                 </p>
               </div>

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import { ProjectDetail } from "@/widgets/project-detail";
-import { PROJECTS } from "@/entities/project";
+import { PROJECTS, getProjectBySlug } from "@/entities/project";
 
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({ slug: project.slug }));
@@ -15,7 +15,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
+  const project = getProjectBySlug(slug);
   if (!project) return {};
 
   return {
@@ -30,7 +30,7 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
+  const project = getProjectBySlug(slug);
   if (!project) notFound();
 
   return (

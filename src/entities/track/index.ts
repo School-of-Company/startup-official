@@ -1,3 +1,3 @@
 export type { Track } from "./model";
 export { TRACKS } from "./model";
-export { FrontendIcon, BackendIcon } from "./icons";
+export { FrontendIcon, BackendIcon, DevopsIcon, AiIcon, DesignIcon } from "./icons";

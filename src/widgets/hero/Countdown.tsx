@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { APPLICATION_DEADLINE } from "@/shared/config";
 import { EASE_OUT, STAGGER_CHILD, useCountdown, useReducedMotionSafe } from "@/shared/lib";
@@ -11,7 +12,7 @@ const UNITS = [
   { key: "seconds", label: "SS" },
 ] as const;
 
-function CountdownDigit({ char }: { char: string }) {
+const CountdownDigit = memo(function CountdownDigit({ char }: { char: string }) {
   const reduceMotion = useReducedMotionSafe();
 
   return (
@@ -30,9 +31,9 @@ function CountdownDigit({ char }: { char: string }) {
       </AnimatePresence>
     </span>
   );
-}
+});
 
-function CountdownTile({
+const CountdownTile = memo(function CountdownTile({
   value,
   label,
   delay,
@@ -59,7 +60,7 @@ function CountdownTile({
       <span className="text-xs font-semibold tracking-[0.2em] text-muted sm:text-sm">{label}</span>
     </motion.div>
   );
-}
+});
 
 export default function Countdown() {
   const timeLeft = useCountdown(APPLICATION_DEADLINE);

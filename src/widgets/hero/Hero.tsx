@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Countdown } from "@/widgets/countdown";
+import Countdown from "./Countdown";
 import { DURATION, EASE_OUT, STAGGER_CHILD, useReducedMotionSafe } from "@/shared/lib";
 import { FrontendIcon, BackendIcon } from "@/entities/track";
 

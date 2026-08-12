@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeToggle } from "@/features/theme-toggle";
-import { useReducedMotionSafe } from "@/shared/lib";
+import { EASE_POP, useReducedMotionSafe } from "@/shared/lib";
 import { Logo } from "@/shared/ui";
 
 const HOME_PATH = "/";
@@ -115,7 +115,7 @@ export default function Header() {
             exit={{ opacity: 0, y: menuSlide }}
             transition={{
               duration: reduceMotion ? 0.15 : 0.25,
-              ease: [0.16, 1, 0.3, 1],
+              ease: EASE_POP,
             }}
             className="frost fixed inset-x-0 top-16 bottom-0 z-40 flex flex-col bg-bg/85 px-6 py-8 backdrop-blur-xl md:hidden"
           >

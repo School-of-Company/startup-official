@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { APPLY_URL, APPLICATION_DEADLINE } from "@/shared/config";
-import { useCountdown, useReducedMotionSafe, type TimeLeft } from "@/shared/lib";
+import { EASE_POP, isHttpUrl, useCountdown, useReducedMotionSafe, type TimeLeft } from "@/shared/lib";
 
 function formatCountdown(t: TimeLeft) {
   if (t.isOver) return "모집이 마감되었습니다";
@@ -80,7 +80,7 @@ export default function StickyApplyBar() {
         initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
-          layout: { duration: reduceMotion ? 0.15 : 0.4, ease: [0.16, 1, 0.3, 1] },
+          layout: { duration: reduceMotion ? 0.15 : 0.4, ease: EASE_POP },
           opacity: { duration: reduceMotion ? 0.15 : 0.4 },
           y: { duration: reduceMotion ? 0.15 : 0.4 },
         }}
@@ -96,14 +96,16 @@ export default function StickyApplyBar() {
             {formatCountdown(timeLeft)}
           </p>
         </div>
-        <a
-          href={APPLY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
-        >
-          지원하기
-        </a>
+        {isHttpUrl(APPLY_URL) && (
+          <a
+            href={APPLY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98]"
+          >
+            지원하기
+          </a>
+        )}
       </motion.div>
     </div>
   );
