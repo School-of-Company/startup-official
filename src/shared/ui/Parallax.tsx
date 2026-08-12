@@ -29,7 +29,9 @@ export default function Parallax({
 
   return (
     <div ref={ref} className={className}>
-      <motion.div style={{ y }}>{children}</motion.div>
+      <motion.div style={{ y }} className="h-full w-full">
+        {children}
+      </motion.div>
     </div>
   );
 }
