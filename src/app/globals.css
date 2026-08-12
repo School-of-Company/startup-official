@@ -78,6 +78,7 @@
 }
 
 :root {
+  color-scheme: light;
   --bg: 255 255 255;
   --surface: 246 247 249;
   --surface2: 236 238 242;
@@ -92,6 +93,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --bg: 8 8 11;
   --surface: 15 15 20;
   --surface2: 21 21 28;
@@ -120,6 +122,40 @@ body {
 ::selection {
   background: rgba(255, 59, 92, 0.35);
   color: rgb(var(--fg));
+}
+
+/* Custom scrollbar, themed to match the accent/surface palette above. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--muted) / 0.4) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(var(--muted) / 0.35);
+  background-clip: padding-box;
+  border: 3px solid transparent;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-accent);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(var(--accent-soft));
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 .text-gradient {

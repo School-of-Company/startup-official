@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Parallax } from "@/shared/ui";
 import { EASE_OUT, useReducedMotionSafe } from "@/shared/lib";
@@ -86,12 +87,12 @@ export default function Slogan() {
           }}
           className="mt-8 flex flex-col items-center gap-4 sm:flex-row"
         >
-          <a
+          <Link
             href="/recruit"
             className="w-full rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white transition-transform duration-150 ease-out active:scale-[0.98] sm:w-auto"
           >
             모집 안내 보기
-          </a>
+          </Link>
           <a
             href="#projects"
             className="w-full rounded-full border border-border px-8 py-4 text-sm font-semibold text-fg transition-[background-color,scale] duration-150 ease-out hover:bg-surface active:scale-[0.98] sm:w-auto"

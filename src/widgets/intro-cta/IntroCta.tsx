@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { BRAND } from "@/shared/config";
 import { Reveal } from "@/shared/ui";
@@ -9,12 +10,36 @@ import { useReducedMotionSafe } from "@/shared/lib";
 export default function IntroCta() {
   const cardRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotionSafe();
+  const [maxScale, setMaxScale] = useState(1.3);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const updateMaxScale = () => {
+      const width = card.offsetWidth;
+      if (width > 0) {
+        setMaxScale(document.documentElement.clientWidth / width);
+      }
+    };
+
+    updateMaxScale();
+
+    const observer = new ResizeObserver(updateMaxScale);
+    observer.observe(card);
+    window.addEventListener("resize", updateMaxScale);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateMaxScale);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "center center"],
   });
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1.3]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, maxScale]);
 
   return (
     <section className="relative overflow-hidden py-8 sm:py-12">
@@ -33,12 +58,12 @@ export default function IntroCta() {
               당신과 함께 만들고 싶습니다.
               <br className="hidden sm:block" /> 지금, {BRAND}에 합류하세요.
             </p>
-            <a
+            <Link
               href="/recruit"
               className="mt-8 inline-flex rounded-full bg-white px-8 py-4 text-sm font-semibold text-accent transition-[scale] duration-200 ease-out hover:scale-[1.02] active:scale-[0.97]"
             >
               모집 안내 보러가기
-            </a>
+            </Link>
           </motion.div>
         </Reveal>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { MouseEvent } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemeToggle } from "@/features/theme-toggle";
@@ -14,6 +15,8 @@ const NAV_ITEMS = [
   { path: "/", label: "소개" },
   { path: "/recruit", label: "모집 안내" },
 ];
+
+const MotionLink = motion.create(Link);
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,13 +57,13 @@ export default function Header() {
       }`}
     >
       <div className="relative mx-auto flex h-16 max-w-wide items-center justify-between px-6 sm:px-8 lg:px-10">
-        <a href={HOME_PATH} onClick={scrollToTop} className="flex items-center" aria-label="홈으로 이동">
+        <Link href={HOME_PATH} onClick={scrollToTop} className="flex items-center" aria-label="홈으로 이동">
           <Logo className="h-5 w-auto text-fg sm:h-6" />
-        </a>
+        </Link>
 
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {NAV_ITEMS.map((item) => (
-            <a
+            <Link
               key={item.path}
               href={item.path}
               className={`text-[17px] font-semibold transition-colors ${
@@ -68,7 +71,7 @@ export default function Header() {
               }`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -118,7 +121,7 @@ export default function Header() {
           >
             <nav className="flex flex-col gap-1">
               {NAV_ITEMS.map((item, i) => (
-                <motion.a
+                <MotionLink
                   key={item.path}
                   href={item.path}
                   onClick={() => setMenuOpen(false)}
@@ -133,7 +136,7 @@ export default function Header() {
                   }`}
                 >
                   {item.label}
-                </motion.a>
+                </MotionLink>
               ))}
             </nav>
           </motion.div>
