@@ -37,13 +37,34 @@ export default function SmoothScroll() {
     // like "모집 안내 보러가기" land mid-page instead of at the top. A link
     // like "← 프로젝트 목록으로" (/#projects) still needs to land on that
     // section rather than being forced to the very top, so hash targets are
-    // routed through Lenis's own scrollTo instead.
-    const hash = window.location.hash;
-    if (hash) {
-      lenisRef.current?.scrollTo(hash, { immediate: true });
-    } else {
+    // routed through Lenis's own scrollTo instead. The target section can
+    // still be a frame away from mounting right after a route change, so
+    // retry across a few frames before giving up and going to the top.
+    let cancelled = false;
+    let frameId: number;
+
+    const attempt = (triesLeft: number) => {
+      if (cancelled) return;
+      const hash = window.location.hash;
+      if (hash) {
+        if (document.querySelector(hash)) {
+          lenisRef.current?.scrollTo(hash, { immediate: true });
+          return;
+        }
+        if (triesLeft > 0) {
+          frameId = requestAnimationFrame(() => attempt(triesLeft - 1));
+          return;
+        }
+      }
       lenisRef.current?.scrollTo(0, { immediate: true });
-    }
+    };
+
+    attempt(30);
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(frameId);
+    };
   }, [pathname]);
 
   return null;

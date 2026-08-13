@@ -9,6 +9,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
       <div className="mx-auto max-w-content px-6 sm:px-8 lg:px-10">
         <Link
           href="/#projects"
+          scroll={false}
           className="text-sm text-muted transition-colors hover:text-fg"
         >
           ← 프로젝트 목록으로
