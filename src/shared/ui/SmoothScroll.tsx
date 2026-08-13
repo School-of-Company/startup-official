@@ -48,6 +48,11 @@ export default function SmoothScroll() {
       const hash = window.location.hash;
       if (hash) {
         if (document.querySelector(hash)) {
+          // Lenis debounces its own content-height remeasure, so right after
+          // a route swap `this.limit` can still reflect the previous page's
+          // (shorter) height and clamp the target scroll short of the
+          // section. Force a synchronous remeasure first.
+          lenisRef.current?.resize();
           lenisRef.current?.scrollTo(hash, { immediate: true });
           return;
         }
@@ -56,6 +61,7 @@ export default function SmoothScroll() {
           return;
         }
       }
+      lenisRef.current?.resize();
       lenisRef.current?.scrollTo(0, { immediate: true });
     };
 
