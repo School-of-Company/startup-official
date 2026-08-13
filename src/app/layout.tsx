@@ -5,6 +5,7 @@ import "./globals.css";
 import { pretendard } from "./fonts";
 import { BRAND } from "@/shared/config";
 import { THEME_SCRIPT } from "@/features/theme-toggle";
+import { SmoothScroll } from "@/shared/ui";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.schoolofcompany.com"),
@@ -32,6 +33,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="flex min-h-screen flex-col font-sans antialiased">
+        <SmoothScroll />
         {children}
         <Analytics />
         <SpeedInsights />
