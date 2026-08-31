@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "expo",
     name: "EXPO",
-    stack: ["Kotlin", "Spring Boot", "Next.js", "TypeScript", "PostgreSQL", "AWS"],
+    stack: ["Java", "Spring Boot", "Next.js", "TypeScript", "PostgreSQL", "AWS"],
     description: "교원 연수 및 박람회 사전 신청, 등록 서비스",
     detail: [
       "광주광역시 교육청 외주 프로젝트로, 교육 행사·축전의 디지털 운영 효율화를 목표로 개발한 서비스입니다.",
